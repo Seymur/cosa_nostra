@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dq0dsbruyhysj"]
+
+[ext_resource type="Theme" uid="uid://bomrl5pd4opuj" path="res://themes/default.tres" id="1_4n4b1"]
+[ext_resource type="Texture2D" uid="uid://dgqi0ptqns86a" path="res://assets/icons/arrow-left.svg" id="2_axp1r"]
+[ext_resource type="Texture2D" uid="uid://qpgm775gubm4" path="res://assets/icons/arrow-right.svg" id="3_yciim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yciim"]
+
+[node name="StepperSelect" type="HBoxContainer" unique_id=181902215]
+offset_right = 45.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+theme_override_constants/separation = 8
+
+[node name="Left" type="Button" parent="." unique_id=550759445]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_4n4b1")
+icon = ExtResource("2_axp1r")
+
+[node name="Label" type="Label" parent="." unique_id=1477513993]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yciim")
+text = "Azərbaycanca"
+
+[node name="Right" type="Button" parent="." unique_id=1284371228]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_4n4b1")
+icon = ExtResource("3_yciim")

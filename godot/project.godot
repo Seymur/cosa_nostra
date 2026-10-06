@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 GUIDE="*uid://p2jwrgjcbexr"
 GameClock="*uid://b1f5ae7urcdis"
+Localization="*res://globals/localization.gd"
 
 [display]
 
@@ -28,6 +29,11 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/guide/plugin.cfg")
+
+[internationalization]
+
+locale/fallback="en"
+locale/translations=PackedStringArray("res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation")
 
 [physics]
 

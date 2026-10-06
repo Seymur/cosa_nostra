@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://cg5knlxp7b0se"
+
+[deps]
+
+files=["res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation"]
+
+source_file="res://localization/translations.csv"
+dest_files=["res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://07556caqjvo0" path="res://assets/icons/rotate-cw-fading-clock.svg" id="3_xb203"]
 [ext_resource type="FontFile" uid="uid://dl03uikmd6q6u" path="res://assets/fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="4_ducuf"]
 [ext_resource type="Texture2D" uid="uid://dr4x57t6ufxen" path="res://assets/textures/ui/game_logo.png" id="6_j8flk"]
+[ext_resource type="PackedScene" uid="uid://be30dablje2lt" path="res://ui/settings_menu/settings_menu.tscn" id="7_wmtvo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
 albedo_color = Color(0, 0, 0, 1)
@@ -123,6 +124,7 @@ theme = ExtResource("3_o81xq")
 text = "12 Jan 2020 22:50"
 
 [node name="PauseMenuUI" type="Control" parent="." unique_id=1634159193]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -174,14 +176,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Resume"
+text = "MENU_RESUME"
 
 [node name="SaveGame" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=180085852]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Save Game"
+text = "MENU_SAVE_GAME"
 
 [node name="LoadGame" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=1574847012]
 layout_mode = 2
@@ -189,50 +191,34 @@ size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
 disabled = true
-text = "Load Game"
+text = "MENU_LOAD_GAME"
 
 [node name="Settings" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=470812444]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Settings"
+text = "MENU_SETTINGS"
 
 [node name="Credits" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=471823568]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Credits"
+text = "MENU_CREDITS"
 
 [node name="ExitToMenu" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=330779325]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Exit To Menu"
+text = "MENU_EXIT_TO_MENU"
 
 [node name="ExitToDesktop" type="Button" parent="PauseMenuUI/ColorRect/VBoxContainer/VBoxContainer" unique_id=1934419706]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("3_o81xq")
-text = "Exit To Desktop"
+text = "MENU_EXIT_TO_DESKTOP"
 
-[node name="SettingsMenuUI" type="Control" parent="." unique_id=1039428821]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="SettingsMenuUI" unique_id=1563605360]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.8627451)
+[node name="SettingsMenu" parent="." unique_id=1299267145 instance=ExtResource("7_wmtvo")]

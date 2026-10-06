@@ -1,0 +1,21 @@
+keys,en,az,tr,ru,uk,de,fr,es,it,pt_BR,pl,ja,zh_CN
+MENU_RESUME,Resume,Davam et,Devam Et,Продолжить,Продовжити,Fortsetzen,Reprendre,Reanudar,Riprendi,Continuar,Wznów,再開,继续
+MENU_SAVE_GAME,Save Game,Oyunu yadda saxla,Oyunu Kaydet,Сохранить игру,Зберегти гру,Spiel speichern,Sauvegarder la partie,Guardar partida,Salva partita,Salvar jogo,Zapisz grę,ゲームを保存,保存游戏
+MENU_LOAD_GAME,Load Game,Oyunu yüklə,Oyunu Yükle,Загрузить игру,Завантажити гру,Spiel laden,Charger la partie,Cargar partida,Carica partita,Carregar jogo,Wczytaj grę,ゲームを読み込む,读取游戏
+MENU_SETTINGS,Settings,Ayarlar,Ayarlar,Настройки,Налаштування,Einstellungen,Paramètres,Ajustes,Impostazioni,Configurações,Ustawienia,設定,设置
+MENU_CREDITS,Credits,Yaradıcılar,Emeği Geçenler,Авторы,Автори,Mitwirkende,Crédits,Créditos,Crediti,Créditos,Twórcy,クレジット,制作人员
+MENU_EXIT_TO_MENU,Exit To Menu,Menyuya çıx,Menüye Çık,Выйти в меню,Вийти в меню,Zurück zum Menü,Retour au menu,Salir al menú,Esci al menu,Sair para o menu,Wyjdź do menu,メニューに戻る,返回主菜单
+MENU_EXIT_TO_DESKTOP,Exit To Desktop,İş masasına çıx,Masaüstüne Çık,Выйти на рабочий стол,Вийти на робочий стіл,Zum Desktop beenden,Quitter vers le bureau,Salir al escritorio,Esci sul desktop,Sair para a área de trabalho,Wyjdź na pulpit,デスクトップに戻る,退出到桌面
+DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time}
+MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月
+MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月
+MONTH_3,Mar,Mar,Mar,мар,бер,Mär,mars,mar,mar,mar,mar,3月,3月
+MONTH_4,Apr,Apr,Nis,апр,кві,Apr,avr.,abr,apr,abr,kwi,4月,4月
+MONTH_5,May,May,May,мая,тра,Mai,mai,may,mag,mai,maj,5月,5月
+MONTH_6,Jun,İyn,Haz,июн,чер,Jun,juin,jun,giu,jun,cze,6月,6月
+MONTH_7,Jul,İyl,Tem,июл,лип,Jul,juil.,jul,lug,jul,lip,7月,7月
+MONTH_8,Aug,Avq,Ağu,авг,сер,Aug,août,ago,ago,ago,sie,8月,8月
+MONTH_9,Sep,Sen,Eyl,сен,вер,Sep,sept.,sep,set,set,wrz,9月,9月
+MONTH_10,Oct,Okt,Eki,окт,жов,Okt,oct.,oct,ott,out,paź,10月,10月
+MONTH_11,Nov,Noy,Kas,ноя,лис,Nov,nov.,nov,nov,nov,lis,11月,11月
+MONTH_12,Dec,Dek,Ara,дек,гру,Dez,déc.,dic,dic,dez,gru,12月,12月
