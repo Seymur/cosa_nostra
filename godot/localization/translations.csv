@@ -2,10 +2,15 @@ keys,en,az,tr,ru,uk,de,fr,es,it,pt_BR,pl,ja,zh_CN
 MENU_RESUME,Resume,Davam et,Devam Et,Продолжить,Продовжити,Fortsetzen,Reprendre,Reanudar,Riprendi,Continuar,Wznów,再開,继续
 MENU_SAVE_GAME,Save Game,Oyunu yadda saxla,Oyunu Kaydet,Сохранить игру,Зберегти гру,Spiel speichern,Sauvegarder la partie,Guardar partida,Salva partita,Salvar jogo,Zapisz grę,ゲームを保存,保存游戏
 MENU_LOAD_GAME,Load Game,Oyunu yüklə,Oyunu Yükle,Загрузить игру,Завантажити гру,Spiel laden,Charger la partie,Cargar partida,Carica partita,Carregar jogo,Wczytaj grę,ゲームを読み込む,读取游戏
-MENU_SETTINGS,Settings,Ayarlar,Ayarlar,Настройки,Налаштування,Einstellungen,Paramètres,Ajustes,Impostazioni,Configurações,Ustawienia,設定,设置
+MENU_SETTINGS,Settings,Parametrlər,Ayarlar,Настройки,Налаштування,Einstellungen,Paramètres,Ajustes,Impostazioni,Configurações,Ustawienia,設定,设置
 MENU_CREDITS,Credits,Yaradıcılar,Emeği Geçenler,Авторы,Автори,Mitwirkende,Crédits,Créditos,Crediti,Créditos,Twórcy,クレジット,制作人员
 MENU_EXIT_TO_MENU,Exit To Menu,Menyuya çıx,Menüye Çık,Выйти в меню,Вийти в меню,Zurück zum Menü,Retour au menu,Salir al menú,Esci al menu,Sair para o menu,Wyjdź do menu,メニューに戻る,返回主菜单
 MENU_EXIT_TO_DESKTOP,Exit To Desktop,İş masasına çıx,Masaüstüne Çık,Выйти на рабочий стол,Вийти на робочий стіл,Zum Desktop beenden,Quitter vers le bureau,Salir al escritorio,Esci sul desktop,Sair para a área de trabalho,Wyjdź na pulpit,デスクトップに戻る,退出到桌面
+SETTINGS_TAB_GENERAL,General,Ümumi,Genel,Общие,Загальні,Allgemein,Général,General,Generali,Geral,Ogólne,一般,常规
+SETTINGS_TAB_GRAPHICS,Graphics,Qrafika,Grafik,Графика,Графіка,Grafik,Graphismes,Gráficos,Grafica,Gráficos,Grafika,グラフィック,图形
+SETTINGS_TAB_AUDIO,Audio,Səs,Ses,Звук,Звук,Audio,Audio,Audio,Audio,Áudio,Dźwięk,オーディオ,音频
+SETTINGS_TAB_CONTROLS,Controls,İdarəetmə,Kontroller,Управление,Керування,Steuerung,Commandes,Controles,Controlli,Controles,Sterowanie,コントロール,控制
+SETTINGS_LANGUAGE,Language,Dil,Dil,Язык,Мова,Sprache,Langue,Idioma,Lingua,Idioma,Język,言語,语言
 DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time}
 MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月
 MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月
