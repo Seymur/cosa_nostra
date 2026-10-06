@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://b1f5ae7urcdis"]
+
+[node name="GameClockNode" type="GameClockNode" unique_id=1064736601]
+start_year = 2020

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://catb2pc3unq2c"]
+
+[ext_resource type="Script" uid="uid://ehvuncyw2s3j" path="res://actors/player_controller/player_controller.gd" id="1_jl4op"]
+[ext_resource type="Resource" uid="uid://by3cpkbv2cnyf" path="res://input/default/default.tres" id="2_qgbxn"]
+[ext_resource type="Resource" uid="uid://dfxjkpqffk2ox" path="res://input/default/actions/move.tres" id="3_84iq6"]
+[ext_resource type="Resource" uid="uid://b3e87xepmmht5" path="res://input/default/actions/jump.tres" id="4_84iq6"]
+[ext_resource type="Resource" uid="uid://sm8rinmhbyli" path="res://input/default/actions/look.tres" id="5_kb1hc"]
+[ext_resource type="Resource" uid="uid://36fj7v4t1reo" path="res://input/default/actions/speed_up.tres" id="6_g5mxx"]
+[ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="7_e7mj6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+radius = 0.3
+height = 1.8
+
+[node name="PlayerController" type="CharacterBody3D" unique_id=253727384]
+script = ExtResource("1_jl4op")
+default_mapping_context = ExtResource("2_qgbxn")
+move_action = ExtResource("3_84iq6")
+jump_action = ExtResource("4_84iq6")
+look_action = ExtResource("5_kb1hc")
+speed_up_action = ExtResource("6_g5mxx")
+speed_down_action = ExtResource("7_e7mj6")
+
+[node name="Head" type="Node3D" parent="." unique_id=1537407369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+
+[node name="Camera" type="Camera3D" parent="Head" unique_id=1689887676]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1493461509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_g4v7s")

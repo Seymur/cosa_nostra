@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GUIDEAction" format=3 uid="uid://36fj7v4t1reo"]
+
+[ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="1_f6bgi"]
+
+[resource]
+script = ExtResource("1_f6bgi")
+name = &"Speed Up"
+metadata/_custom_type_script = "uid://cluhc11vixkf1"

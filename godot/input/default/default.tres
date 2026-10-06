@@ -1,0 +1,137 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" format=3 uid="uid://by3cpkbv2cnyf"]
+
+[ext_resource type="Script" uid="uid://cpplm41b5bt6m" path="res://addons/guide/guide_action_mapping.gd" id="1_wretk"]
+[ext_resource type="Script" uid="uid://dsa1dnifd6w32" path="res://addons/guide/guide_mapping_context.gd" id="2_oi4sb"]
+[ext_resource type="Resource" uid="uid://dfxjkpqffk2ox" path="res://input/default/actions/move.tres" id="2_qdsxr"]
+[ext_resource type="Script" uid="uid://mtx1unc2aqn7" path="res://addons/guide/guide_input_mapping.gd" id="3_7ty0e"]
+[ext_resource type="Script" uid="uid://cw71o87tvdx3q" path="res://addons/guide/inputs/guide_input_key.gd" id="4_8ltln"]
+[ext_resource type="Script" uid="uid://bl8rjl4oaldje" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_j43ie"]
+[ext_resource type="Script" uid="uid://ckggy40lm0vjc" path="res://addons/guide/modifiers/guide_modifier_negate.gd" id="6_g8wyw"]
+[ext_resource type="Script" uid="uid://x74mnwgr08a7" path="res://addons/guide/triggers/guide_trigger.gd" id="7_ud16w"]
+[ext_resource type="Script" uid="uid://bm5gjgadon6hb" path="res://addons/guide/modifiers/guide_modifier_input_swizzle.gd" id="8_jrkjt"]
+[ext_resource type="Resource" uid="uid://b3e87xepmmht5" path="res://input/default/actions/jump.tres" id="9_j43ie"]
+[ext_resource type="Script" uid="uid://b52rqq28tuqpg" path="res://addons/guide/triggers/guide_trigger_pressed.gd" id="10_g8wyw"]
+[ext_resource type="Resource" uid="uid://sm8rinmhbyli" path="res://input/default/actions/look.tres" id="11_jrkjt"]
+[ext_resource type="Script" uid="uid://dh0hf08e0yit5" path="res://addons/guide/inputs/guide_input_mouse_axis_2d.gd" id="12_xpxm8"]
+[ext_resource type="Resource" uid="uid://36fj7v4t1reo" path="res://input/default/actions/speed_up.tres" id="13_8p08k"]
+[ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="14_7dbkx"]
+
+[sub_resource type="Resource" id="Resource_xpxm8"]
+script = ExtResource("4_8ltln")
+key = 87
+
+[sub_resource type="Resource" id="Resource_yngqc"]
+script = ExtResource("8_jrkjt")
+
+[sub_resource type="Resource" id="Resource_8ltln"]
+script = ExtResource("6_g8wyw")
+
+[sub_resource type="Resource" id="Resource_7dbkx"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_xpxm8")
+modifiers = Array[ExtResource("5_j43ie")]([SubResource("Resource_yngqc"), SubResource("Resource_8ltln")])
+
+[sub_resource type="Resource" id="Resource_twsto"]
+script = ExtResource("4_8ltln")
+key = 65
+
+[sub_resource type="Resource" id="Resource_j43ie"]
+script = ExtResource("6_g8wyw")
+
+[sub_resource type="Resource" id="Resource_yr7td"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_twsto")
+modifiers = Array[ExtResource("5_j43ie")]([SubResource("Resource_j43ie")])
+
+[sub_resource type="Resource" id="Resource_7y173"]
+script = ExtResource("4_8ltln")
+key = 83
+
+[sub_resource type="Resource" id="Resource_fkl4s"]
+script = ExtResource("8_jrkjt")
+
+[sub_resource type="Resource" id="Resource_yepd7"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_7y173")
+modifiers = Array[ExtResource("5_j43ie")]([SubResource("Resource_fkl4s")])
+
+[sub_resource type="Resource" id="Resource_onvto"]
+script = ExtResource("4_8ltln")
+key = 68
+
+[sub_resource type="Resource" id="Resource_xjrmk"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_onvto")
+
+[sub_resource type="Resource" id="Resource_76wwl"]
+script = ExtResource("1_wretk")
+action = ExtResource("2_qdsxr")
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_7dbkx"), SubResource("Resource_yr7td"), SubResource("Resource_yepd7"), SubResource("Resource_xjrmk")])
+
+[sub_resource type="Resource" id="Resource_g8wyw"]
+script = ExtResource("4_8ltln")
+key = 32
+
+[sub_resource type="Resource" id="Resource_8p08k"]
+script = ExtResource("10_g8wyw")
+
+[sub_resource type="Resource" id="Resource_ud16w"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_g8wyw")
+triggers = Array[ExtResource("7_ud16w")]([SubResource("Resource_8p08k")])
+
+[sub_resource type="Resource" id="Resource_jrkjt"]
+script = ExtResource("1_wretk")
+action = ExtResource("9_j43ie")
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_ud16w")])
+
+[sub_resource type="Resource" id="Resource_e6l4x"]
+script = ExtResource("12_xpxm8")
+
+[sub_resource type="Resource" id="Resource_3rxcn"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_e6l4x")
+
+[sub_resource type="Resource" id="Resource_nwdb8"]
+script = ExtResource("1_wretk")
+action = ExtResource("11_jrkjt")
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_3rxcn")])
+
+[sub_resource type="Resource" id="Resource_fyp5m"]
+script = ExtResource("4_8ltln")
+key = 4194323
+
+[sub_resource type="Resource" id="Resource_pjisy"]
+script = ExtResource("10_g8wyw")
+
+[sub_resource type="Resource" id="Resource_qxmiw"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_fyp5m")
+triggers = Array[ExtResource("7_ud16w")]([SubResource("Resource_pjisy")])
+
+[sub_resource type="Resource" id="Resource_jurpl"]
+script = ExtResource("1_wretk")
+action = ExtResource("13_8p08k")
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_qxmiw")])
+
+[sub_resource type="Resource" id="Resource_ytp3u"]
+script = ExtResource("4_8ltln")
+key = 4194324
+
+[sub_resource type="Resource" id="Resource_xqyqr"]
+script = ExtResource("10_g8wyw")
+
+[sub_resource type="Resource" id="Resource_g5tni"]
+script = ExtResource("3_7ty0e")
+input = SubResource("Resource_ytp3u")
+triggers = Array[ExtResource("7_ud16w")]([SubResource("Resource_xqyqr")])
+
+[sub_resource type="Resource" id="Resource_m2aq0"]
+script = ExtResource("1_wretk")
+action = ExtResource("14_7dbkx")
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_g5tni")])
+
+[resource]
+script = ExtResource("2_oi4sb")
+mappings = Array[ExtResource("1_wretk")]([SubResource("Resource_76wwl"), SubResource("Resource_jrkjt"), SubResource("Resource_nwdb8"), SubResource("Resource_jurpl"), SubResource("Resource_m2aq0")])
+metadata/_custom_type_script = "uid://dsa1dnifd6w32"
