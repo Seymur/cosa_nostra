@@ -30,6 +30,7 @@ func _set_game_clock_text():
 func _set_speed_text():
 	$GameClockContainer/GameClock/PanelContainer/HBoxContainer/Label.text = "x" + str(int(GameClock.speed_multiplier))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and UIManager.top() == null:
+		UIManager.push(UIManager.PAUSE)
+		get_viewport().set_input_as_handled()

@@ -9,11 +9,6 @@ func _ready() -> void:
 	# 1. Reset the global tab bar cursor so it defaults to a regular arrow
 	tab_bar.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-	# Tab titles default to node names; swap in keys (TabContainer auto-translates them).
-	# var tabs: TabContainer = $ColorRect/MarginContainer/TabContainer
-	# for i in tabs.get_tab_count():
-	# 	tabs.set_tab_title(i, "SETTINGS_TAB_" + tabs.get_child(i).name.to_upper())
-
 	language_stepper.set_items(PackedStringArray(Localization.LANGUAGES.values()), _current_locale_index())
 	language_stepper.selected.connect(_on_language_selected)
 

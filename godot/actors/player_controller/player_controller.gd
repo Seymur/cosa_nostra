@@ -19,7 +19,7 @@ func _ready() -> void:
 	look_action.triggered.connect(_on_look_triggered)
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
 	speed_down_action.triggered.connect(_on_speed_down_triggered)
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_speed_up_triggered():
 	GameClock.set_speed(GameClock.speed_multiplier * 2.0)
