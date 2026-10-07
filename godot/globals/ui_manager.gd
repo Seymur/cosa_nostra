@@ -24,7 +24,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func top() -> Control:
 	return null if _stack.is_empty() else _stack.back()
 
-## Opens a screen on top of the current one and pauses the game.
+## Opens a screen on top of the current one. Does not pause the game: pausing
+## is shared state owned by GameControl.
 func push(scene: PackedScene) -> Control:
 	var below := top()
 	if below:
@@ -36,12 +37,11 @@ func push(scene: PackedScene) -> Control:
 	screen.process_mode = Node.PROCESS_MODE_ALWAYS
 	_layer.add_child(screen)
 	_stack.push_back(screen)
-	get_tree().paused = true
 	_focus_first(screen)
 	screen_changed.emit(screen)
 	return screen
 
-## Closes the top screen; unpauses once the stack is empty.
+## Closes the top screen.
 func pop() -> void:
 	if _stack.is_empty():
 		return
@@ -51,7 +51,6 @@ func pop() -> void:
 		below.show()
 		_focus_first(below)
 	else:
-		get_tree().paused = false
 		Input.mouse_mode = _previous_mouse_mode
 	screen_changed.emit(below)
 

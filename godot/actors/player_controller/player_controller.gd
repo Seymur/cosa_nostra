@@ -22,10 +22,10 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_speed_up_triggered():
-	GameClock.set_speed(GameClock.speed_multiplier * 2.0)
+	GameControl.request_speed(GameClock.speed_multiplier * 2.0)
 
 func _on_speed_down_triggered():
-	GameClock.set_speed(GameClock.speed_multiplier / 2.0)
+	GameControl.request_speed(GameClock.speed_multiplier / 2.0)
 
 func _on_look_triggered():
 	rotate_y(-deg_to_rad(look_action.value_axis_2d.x) * horizontal_sensitivity)

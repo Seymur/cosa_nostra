@@ -34,3 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and UIManager.top() == null:
 		UIManager.push(UIManager.PAUSE)
 		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("toggle_pause") and UIManager.top() == null:
+		GameControl.toggle_pause()
+		get_viewport().set_input_as_handled()
