@@ -4,6 +4,8 @@ extends Control
 @onready var language_stepper: StepperSelect = $ColorRect/MarginContainer/TabContainer/General/ScrollContainer/VBoxContainer/HBoxContainer/StepperSelect
 @onready var window_mode_stepper: StepperSelect = $ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer/StepperSelect
 
+@onready var resolution_stepper: StepperSelect = $ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/ResolutionRow/StepperSelect
+
 var _locales: Array = Localization.LANGUAGES.keys()
 
 func _ready() -> void:
@@ -16,6 +18,12 @@ func _ready() -> void:
 	_refresh_window_mode_items()
 	window_mode_stepper.selected.connect(DisplaySettings.set_window_mode_index)
 	Localization.language_changed.connect(_refresh_window_mode_items.unbind(1))
+
+	var res_names := PackedStringArray()
+	for res in DisplaySettings.RESOLUTIONS:
+		res_names.append("%d x %d" % [res.x, res.y])
+	resolution_stepper.set_items(res_names, DisplaySettings.get_resolution_index())
+	resolution_stepper.selected.connect(DisplaySettings.set_resolution_index)
 
 func _refresh_window_mode_items() -> void:
 	var names := PackedStringArray()

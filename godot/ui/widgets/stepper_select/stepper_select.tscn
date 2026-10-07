@@ -23,7 +23,7 @@ icon = ExtResource("2_axp1r")
 [node name="Label" type="Label" parent="." unique_id=1477513993]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yciim")
-text = "Azərbaycanca"
+text = "Option"
 
 [node name="Right" type="Button" parent="." unique_id=1284371228]
 layout_mode = 2

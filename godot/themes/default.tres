@@ -102,3 +102,4 @@ TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_2g1ym")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_2g1ym")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_j8flk")
 TabContainer/styles/tabbar_background = null
+VBoxContainer/constants/separation = 16

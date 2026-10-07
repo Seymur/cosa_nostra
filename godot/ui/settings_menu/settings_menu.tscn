@@ -39,13 +39,14 @@ theme_override_constants/margin_bottom = 64
 [node name="TabContainer" type="TabContainer" parent="ColorRect/MarginContainer" unique_id=1860883065]
 layout_mode = 2
 theme = ExtResource("1_cobfr")
-current_tab = 0
+current_tab = 1
 tab_0/title = "SETTINGS_TAB_GENERAL"
 tab_1/title = "SETTINGS_TAB_GRAPHICS"
 tab_2/title = "SETTINGS_TAB_AUDIO"
 tab_3/title = "SETTINGS_TAB_CONTROLS"
 
 [node name="General" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=547909626]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 metadata/_tab_index = 0
@@ -57,6 +58,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/General/ScrollContainer" unique_id=1772467107]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_cobfr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/TabContainer/General/ScrollContainer/VBoxContainer" unique_id=1157879794]
 layout_mode = 2
@@ -75,7 +77,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Graphics" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=1155381595]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 metadata/_tab_index = 1
@@ -87,6 +88,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer" unique_id=1772467108]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_cobfr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=1157879795]
 layout_mode = 2
@@ -102,6 +104,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="StepperSelect" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=996265881 instance=ExtResource("3_2adas")]
+layout_mode = 2
+
+[node name="ResolutionRow" type="HBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=1157879796]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/ResolutionRow" unique_id=1072088408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kvsec")
+text = "SETTINGS_RESOLUTION"
+
+[node name="Control" type="Control" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/ResolutionRow" unique_id=458905228]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StepperSelect" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/ResolutionRow" unique_id=996265882 instance=ExtResource("3_2adas")]
 layout_mode = 2
 
 [node name="Audio" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=41770990]
