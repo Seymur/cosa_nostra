@@ -7,7 +7,7 @@ func _ready() -> void:
 	GameClock.minute_changed.connect(_on_minute_changed)
 	GameClock.speed_changed.connect(_on_speed_changed)
 
-func _on_speed_changed(speed, paused):
+func _on_speed_changed(_speed, _paused):
 	_set_speed_text()
 
 func _on_minute_changed():
