@@ -6,10 +6,16 @@ extends CharacterBody3D
 @export var look_action: GUIDEAction;
 @export var speed_up_action: GUIDEAction;
 @export var speed_down_action: GUIDEAction;
+@export var interact_action: GUIDEAction;
+
+## Temporary: keys 1..n equip these, 0 unequips. Replace with a real inventory.
+@export var debug_items: Array[ItemData] = []
 
 @export_group("Mouse")
 @export var horizontal_sensitivity = 0.1
 @export var vertical_sensitivity = 0.1
+
+var _menu: WorldMenu
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -19,6 +25,7 @@ func _ready() -> void:
 	look_action.triggered.connect(_on_look_triggered)
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
 	speed_down_action.triggered.connect(_on_speed_down_triggered)
+	interact_action.triggered.connect(_on_interact_triggered)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_speed_up_triggered():
@@ -26,6 +33,50 @@ func _on_speed_up_triggered():
 
 func _on_speed_down_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier / 2.0)
+
+func _on_interact_triggered() -> void:
+	if UIManager.top() != null:
+		return
+	if _menu != null:
+		_menu.choose()
+		return
+	var interactable := _get_target_interactable()
+	if interactable == null:
+		return
+	# An equipped item that satisfies an option runs it without the menu.
+	var direct := interactable.get_direct_option(Equipment.equipped)
+	if direct:
+		interactable.interact(direct, self)
+		return
+	_open_menu(interactable)
+
+func _open_menu(interactable: Interactable) -> void:
+	_menu = WorldMenu.new()
+	_menu.setup(interactable, $Head/Camera)
+	_menu.option_chosen.connect(interactable.interact.bind(self))
+	_menu.closed.connect(func() -> void: _menu = null)
+	# Last child, so it gets input before the HUD (Esc closes it, not pause).
+	get_parent().add_child(_menu)
+
+func _get_target_interactable() -> Interactable:
+	var ray: RayCast3D = $Head/Camera/InteractRay
+	ray.force_raycast_update()
+	var collider := ray.get_collider() as Node
+	if collider == null:
+		return null
+	for child in collider.get_children():
+		if child is Interactable:
+			return child
+	return null
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if UIManager.top() != null or not event.is_pressed() or event.is_echo():
+		return
+	var key := (event as InputEventKey).keycode
+	if key == KEY_0:
+		Equipment.unequip()
+	elif key >= KEY_1 and key <= KEY_9 and key - KEY_1 < debug_items.size():
+		Equipment.equip(debug_items[key - KEY_1])
 
 func _on_look_triggered():
 	rotate_y(-deg_to_rad(look_action.value_axis_2d.x) * horizontal_sensitivity)

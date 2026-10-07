@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InteractionOption" format=3 uid="uid://byssvvd5jql0t"]
+
+[ext_resource type="Script" uid="uid://c4dv1aa5ym544" path="res://interaction/interaction_option.gd" id="1_1i7r1"]
+
+[resource]
+script = ExtResource("1_1i7r1")
+id = &"Trade"
+label = "INTERACT_TRADE"
+metadata/_custom_type_script = "uid://c4dv1aa5ym544"

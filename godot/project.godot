@@ -22,6 +22,7 @@ Localization="*res://globals/localization.gd"
 DisplaySettings="*res://globals/display_settings.gd"
 UIManager="*res://globals/ui_manager.gd"
 GameControl="*res://globals/game_control.gd"
+Equipment="*res://globals/equipment.gd"
 
 [display]
 
@@ -48,7 +49,7 @@ toggle_pause={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation")
+locale/translations=PackedStringArray("res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation", "res://localization/translations.kk.translation")
 
 [physics]
 

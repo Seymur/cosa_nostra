@@ -21,6 +21,7 @@ const LANGUAGES := {
 	"pl": "Polski",
 	"ja": "日本語",
 	"zh_CN": "简体中文",
+	"kk": "Қазақша",
 }
 
 func _ready() -> void:
