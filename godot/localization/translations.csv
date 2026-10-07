@@ -16,6 +16,27 @@ SETTINGS_RESOLUTION,Resolution,Ekran ölçüsü,Çözünürlük,Разрешен
 SETTINGS_WINDOW_MODE_WINDOWED,Windowed,Pəncərəli,Pencereli,Оконный,Віконний,Fenster,Fenêtré,Ventana,Finestra,Em janela,Okno,ウィンドウ,窗口
 SETTINGS_WINDOW_MODE_FULLSCREEN,Fullscreen,Tam ekran,Tam Ekran,Полный экран,Повний екран,Vollbild,Plein écran,Pantalla completa,Schermo intero,Tela cheia,Pełny ekran,フルスクリーン,全屏
 SETTINGS_WINDOW_MODE_EXCLUSIVE,Exclusive Fullscreen,Eksklüziv tam ekran,Özel Tam Ekran,Эксклюзивный полный экран,Ексклюзивний повний екран,Exklusiver Vollbildmodus,Plein écran exclusif,Pantalla completa exclusiva,Schermo intero esclusivo,Tela cheia exclusiva,Pełny ekran wyłączny,排他的フルスクリーン,独占全屏
+SETTINGS_MONITOR,Monitor,Ekran,Monitör,Монитор,Монітор,Monitor,Moniteur,Monitor,Monitor,Monitor,Monitor,モニター,显示器
+SETTINGS_VSYNC,VSync,Şaquli sinxronizasiya,Dikey Senkronizasyon,Вертикальная синхронизация,Вертикальна синхронізація,VSync,Synchro verticale,Sincronización vertical,Sincronizzazione verticale,Sincronização vertical,Synchronizacja pionowa,垂直同期,垂直同步
+SETTINGS_FPS_CAP,FPS Limit,FPS limiti,FPS Sınırı,Лимит FPS,Ліміт FPS,FPS-Limit,Limite de FPS,Límite de FPS,Limite FPS,Limite de FPS,Limit FPS,FPS上限,FPS 上限
+SETTINGS_SHOW_FPS,Show FPS,FPS göstər,FPS Göster,Показывать FPS,Показувати FPS,FPS anzeigen,Afficher les FPS,Mostrar FPS,Mostra FPS,Mostrar FPS,Pokaż FPS,FPSを表示,显示 FPS
+SETTINGS_QUALITY_PRESET,Quality Preset,Keyfiyyət şablonu,Kalite Ön Ayarı,Пресет качества,Пресет якості,Qualitätsvorgabe,Préréglage de qualité,Preajuste de calidad,Preset di qualità,Predefinição de qualidade,Profil jakości,画質プリセット,画质预设
+SETTINGS_MSAA,Anti-Aliasing (MSAA),Kənar yumşaltma (MSAA),Kenar Yumuşatma (MSAA),Сглаживание (MSAA),Згладжування (MSAA),Kantenglättung (MSAA),Anticrénelage (MSAA),Suavizado (MSAA),Anti-aliasing (MSAA),Suavização (MSAA),Antyaliasing (MSAA),アンチエイリアス (MSAA),抗锯齿 (MSAA)
+SETTINGS_SSAA,Screen-Space AA,Ekran kənar yumşaltması (SSAA),Ekran Kenar Yumuşatması (SSAA),Экранное сглаживание,Екранне згладжування,Bildschirmraum-AA,AA en espace écran,AA en espacio de pantalla,AA nello spazio schermo,AA no espaço da tela,AA w przestrzeni ekranu,スクリーンスペースAA,屏幕空间抗锯齿
+SETTINGS_TAA,Temporal AA (TAA),Zamanlı kənar yumşaltma (TAA),Zamansal Kenar Yumuşatma (TAA),Временное сглаживание (TAA),Часове згладжування (TAA),Temporales AA (TAA),AA temporel (TAA),AA temporal (TAA),AA temporale (TAA),AA temporal (TAA),AA czasowe (TAA),テンポラルAA (TAA),时间抗锯齿 (TAA)
+SETTINGS_RENDER_SCALE,Render Scale,Render miqyası,Render Ölçeği,Масштаб рендера,Масштаб рендера,Render-Skalierung,Échelle de rendu,Escala de render,Scala di rendering,Escala de renderização,Skala renderowania,レンダースケール,渲染比例
+SETTINGS_SHADOWS,Shadows,Kölgələr,Gölgeler,Тени,Тіні,Schatten,Ombres,Sombras,Ombre,Sombras,Cienie,影,阴影
+SETTINGS_GLOW,Glow,Parıltı,Parlama,Свечение,Світіння,Leuchten,Lueur,Resplandor,Bagliore,Brilho,Poświata,グロー,辉光
+SETTINGS_SSAO,Ambient Occlusion (SSAO),Ətraf işıq gizlənməsi (SSAO),Ortam örtme (SSAO),Затенение окружения (SSAO),Затінення оточення (SSAO),Umgebungsverdeckung (SSAO),Occlusion ambiante (SSAO),Oclusión ambiental (SSAO),Occlusione ambientale (SSAO),Oclusão de ambiente (SSAO),Okluzja otoczenia (SSAO),アンビエントオクルージョン (SSAO),环境光遮蔽 (SSAO)
+SETTINGS_SSR,Reflections (SSR),Əks olunmalar (SSR),Yansımalar (SSR),Отражения (SSR),Відображення (SSR),Reflexionen (SSR),Réflexions (SSR),Reflejos (SSR),Riflessi (SSR),Reflexos (SSR),Odbicia (SSR),反射 (SSR),反射 (SSR)
+SETTINGS_OFF,Off,Söndürülü,Kapalı,Выкл,Вимк,Aus,Désactivé,Desactivado,Disattivato,Desligado,Wył.,オフ,关
+SETTINGS_ON,On,Aktiv,Açık,Вкл,Увімк,An,Activé,Activado,Attivato,Ligado,Wł.,オン,开
+SETTINGS_ADAPTIVE,Adaptive,Adaptiv,Uyarlanabilir,Адаптивная,Адаптивна,Adaptiv,Adaptative,Adaptativa,Adattiva,Adaptativa,Adaptacyjna,アダプティブ,自适应
+SETTINGS_UNLIMITED,Unlimited,Limitsiz,Sınırsız,Без ограничений,Без обмежень,Unbegrenzt,Illimité,Ilimitado,Illimitato,Ilimitado,Bez limitu,無制限,无限制
+SETTINGS_QUALITY_LOW,Low,Aşağı,Düşük,Низкое,Низька,Niedrig,Faible,Bajo,Basso,Baixo,Niskie,低,低
+SETTINGS_QUALITY_MEDIUM,Medium,Orta,Orta,Среднее,Середня,Mittel,Moyen,Medio,Medio,Médio,Średnie,中,中
+SETTINGS_QUALITY_HIGH,High,Yüksək,Yüksek,Высокое,Висока,Hoch,Élevé,Alto,Alto,Alto,Wysokie,高,高
+SETTINGS_QUALITY_CUSTOM,Custom,Fərdi,Özel,Свой,Власна,Benutzerdefiniert,Personnalisé,Personalizado,Personalizzato,Personalizado,Własne,カスタム,自定义
 DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time}
 MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月
 MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月
