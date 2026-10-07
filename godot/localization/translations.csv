@@ -11,6 +11,10 @@ SETTINGS_TAB_GRAPHICS,Graphics,Qrafika,Grafik,Графика,Графіка,Graf
 SETTINGS_TAB_AUDIO,Audio,Səs,Ses,Звук,Звук,Audio,Audio,Audio,Audio,Áudio,Dźwięk,オーディオ,音频
 SETTINGS_TAB_CONTROLS,Controls,İdarəetmə,Kontroller,Управление,Керування,Steuerung,Commandes,Controles,Controlli,Controles,Sterowanie,コントロール,控制
 SETTINGS_LANGUAGE,Language,Dil,Dil,Язык,Мова,Sprache,Langue,Idioma,Lingua,Idioma,Język,言語,语言
+SETTINGS_WINDOW_MODE,Window Mode,Pəncərə rejimi,Pencere Modu,Режим окна,Режим вікна,Fenstermodus,Mode d'affichage,Modo de ventana,Modalità finestra,Modo de janela,Tryb okna,ウィンドウモード,窗口模式
+SETTINGS_WINDOW_MODE_WINDOWED,Windowed,Pəncərəli,Pencereli,Оконный,Віконний,Fenster,Fenêtré,Ventana,Finestra,Em janela,Okno,ウィンドウ,窗口
+SETTINGS_WINDOW_MODE_FULLSCREEN,Fullscreen,Tam ekran,Tam Ekran,Полный экран,Повний екран,Vollbild,Plein écran,Pantalla completa,Schermo intero,Tela cheia,Pełny ekran,フルスクリーン,全屏
+SETTINGS_WINDOW_MODE_EXCLUSIVE,Exclusive Fullscreen,Eksklüziv tam ekran,Özel Tam Ekran,Эксклюзивный полный экран,Ексклюзивний повний екран,Exklusiver Vollbildmodus,Plein écran exclusif,Pantalla completa exclusiva,Schermo intero esclusivo,Tela cheia exclusiva,Pełny ekran wyłączny,排他的フルスクリーン,独占全屏
 DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time}
 MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月
 MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月

@@ -81,6 +81,29 @@ theme_override_constants/margin_top = 16
 metadata/_tab_index = 1
 metadata/_tab_name = "SETTINGS_TAB_GRAPHICS"
 
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics" unique_id=1900265127]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer" unique_id=1772467108]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=1157879795]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1072088407]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kvsec")
+text = "SETTINGS_WINDOW_MODE"
+
+[node name="Control" type="Control" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=458905227]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StepperSelect" parent="ColorRect/MarginContainer/TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=996265881 instance=ExtResource("3_2adas")]
+layout_mode = 2
+
 [node name="Audio" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=41770990]
 visible = false
 layout_mode = 2

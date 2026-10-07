@@ -19,6 +19,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 GUIDE="*uid://p2jwrgjcbexr"
 GameClock="*uid://b1f5ae7urcdis"
 Localization="*res://globals/localization.gd"
+DisplaySettings="*res://globals/display_settings.gd"
 UIManager="*res://globals/ui_manager.gd"
 GameControl="*res://globals/game_control.gd"
 
