@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InteractionOption" format=3]
+
+[ext_resource type="Script" uid="uid://c4dv1aa5ym544" path="res://interaction/interaction_option.gd" id="1_opt"]
+
+[resource]
+script = ExtResource("1_opt")
+id = &"pick_up"
+label = "INTERACT_PICK_UP"

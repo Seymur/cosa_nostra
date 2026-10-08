@@ -51,6 +51,7 @@ MONTH_10,Oct,Okt,Eki,окт,жов,Okt,oct.,oct,ott,out,paź,10月,10月,қаз
 MONTH_11,Nov,Noy,Kas,ноя,лис,Nov,nov.,nov,nov,nov,lis,11月,11月,қар
 MONTH_12,Dec,Dek,Ara,дек,гру,Dez,déc.,dic,dic,dez,gru,12月,12月,жел
 INTERACT_INSPECT,Inspect,Yoxla,İncele,Осмотреть,Оглянути,Untersuchen,Examiner,Examinar,Esamina,Inspecionar,Zbadaj,調べる,查看,Тексеру
+INTERACT_PICK_UP,Pick up,Götür,Al,Подобрать,Підняти,Aufheben,Ramasser,Recoger,Raccogli,Pegar,Podnieś,拾う,拾取,Алу
 INTERACT_PRY_OPEN,Pry open,Zorla aç,Zorla aç,Взломать,Зламати,Aufbrechen,Forcer,Forzar,Scassina,Arrombar,Podważ,こじ開ける,撬开,Бұзып ашу
 ITEM_CROWBAR,Crowbar,Qaldırıcı,Levye,Монтировка,Лом,Brecheisen,Pied-de-biche,Palanca,Piede di porco,Pé de cabra,Łom,バール,撬棍,Лом
 TEST_BOX,Box,Qutu,Kutu,Ящик,Ящик,Kiste,Caisse,Caja,Scatola,Caixa,Skrzynia,箱,箱子,Жәшік

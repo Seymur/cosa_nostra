@@ -25,7 +25,15 @@ func _ready() -> void:
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
 	speed_down_action.triggered.connect(_on_speed_down_triggered)
 	interact_action.triggered.connect(_on_interact_triggered)
+	Equipment.equipped_changed.connect(_on_equipped_changed)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _on_equipped_changed(item: ItemData) -> void:
+	var hand: Node3D = $Head/Camera/HeldItem
+	for child in hand.get_children():
+		child.queue_free()
+	if item and item.held_scene:
+		hand.add_child(item.held_scene.instantiate())
 
 func _on_speed_up_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier * 2.0)
@@ -59,6 +67,27 @@ func get_target_interactable() -> Interactable:
 		if child is Interactable:
 			return child
 	return null
+
+func _unhandled_input(event: InputEvent) -> void:
+	if UIManager.top() != null or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+	var click := event as InputEventMouseButton
+	if click == null or not click.pressed or click.button_index != MOUSE_BUTTON_LEFT:
+		return
+	var interactable := get_target_interactable()
+	if interactable == null:
+		return
+	# An option matching the equipped item wins, else the only available option.
+	var direct := interactable.get_direct_option(Equipment.equipped)
+	if direct:
+		interactable.interact(direct, self)
+		return
+	var available: Array[InteractionOption] = []
+	for option in interactable.options:
+		if interactable.is_available(option, Equipment.equipped):
+			available.append(option)
+	if available.size() == 1:
+		interactable.interact(available[0], self)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if UIManager.top() != null or not event.is_pressed() or event.is_echo():
