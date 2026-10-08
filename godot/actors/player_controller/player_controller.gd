@@ -15,10 +15,9 @@ extends CharacterBody3D
 @export var horizontal_sensitivity = 0.1
 @export var vertical_sensitivity = 0.1
 
-var _menu: WorldMenu
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const INTERACTION_MENU := preload("res://ui/interaction_menu/interaction_menu.tscn")
 
 func _ready() -> void:
 	GUIDE.enable_mapping_context(default_mapping_context)
@@ -37,28 +36,20 @@ func _on_speed_down_triggered():
 func _on_interact_triggered() -> void:
 	if UIManager.top() != null:
 		return
-	if _menu != null:
-		_menu.choose()
-		return
-	var interactable := _get_target_interactable()
+	var interactable := get_target_interactable()
 	if interactable == null:
 		return
-	# An equipped item that satisfies an option runs it without the menu.
+	# An equipped item that satisfies an option runs it.
 	var direct := interactable.get_direct_option(Equipment.equipped)
 	if direct:
 		interactable.interact(direct, self)
 		return
-	_open_menu(interactable)
+	var menu := UIManager.push(INTERACTION_MENU)
+	menu.setup(interactable, self)
+	# The menu is driven by scroll and E, so keep looking around.
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _open_menu(interactable: Interactable) -> void:
-	_menu = WorldMenu.new()
-	_menu.setup(interactable, $Head/Camera)
-	_menu.option_chosen.connect(interactable.interact.bind(self))
-	_menu.closed.connect(func() -> void: _menu = null)
-	# Last child, so it gets input before the HUD (Esc closes it, not pause).
-	get_parent().add_child(_menu)
-
-func _get_target_interactable() -> Interactable:
+func get_target_interactable() -> Interactable:
 	var ray: RayCast3D = $Head/Camera/InteractRay
 	ray.force_raycast_update()
 	var collider := ray.get_collider() as Node

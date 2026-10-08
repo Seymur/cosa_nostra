@@ -16,7 +16,6 @@
 [ext_resource type="Resource" uid="uid://36fj7v4t1reo" path="res://input/default/actions/speed_up.tres" id="13_8p08k"]
 [ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="14_7dbkx"]
 [ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="15_inter"]
-[ext_resource type="Script" uid="uid://vgjlx6p007lp" path="res://addons/guide/inputs/guide_input_mouse_button.gd" id="16_mbtn"]
 
 [sub_resource type="Resource" id="Resource_xpxm8"]
 script = ExtResource("4_8ltln")
@@ -145,21 +144,10 @@ script = ExtResource("3_7ty0e")
 input = SubResource("Resource_ikey")
 triggers = Array[ExtResource("7_ud16w")]([SubResource("Resource_itrg1")])
 
-[sub_resource type="Resource" id="Resource_imouse"]
-script = ExtResource("16_mbtn")
-
-[sub_resource type="Resource" id="Resource_itrg2"]
-script = ExtResource("10_g8wyw")
-
-[sub_resource type="Resource" id="Resource_imousem"]
-script = ExtResource("3_7ty0e")
-input = SubResource("Resource_imouse")
-triggers = Array[ExtResource("7_ud16w")]([SubResource("Resource_itrg2")])
-
 [sub_resource type="Resource" id="Resource_iact"]
 script = ExtResource("1_wretk")
 action = ExtResource("15_inter")
-input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_ikeym"), SubResource("Resource_imousem")])
+input_mappings = Array[ExtResource("3_7ty0e")]([SubResource("Resource_ikeym")])
 
 [resource]
 script = ExtResource("2_oi4sb")
