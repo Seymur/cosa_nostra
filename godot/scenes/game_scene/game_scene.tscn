@@ -5,18 +5,9 @@
 [ext_resource type="Theme" uid="uid://bomrl5pd4opuj" path="res://themes/default.tres" id="3_o81xq"]
 [ext_resource type="Texture2D" uid="uid://07556caqjvo0" path="res://assets/icons/rotate-cw-fading-clock.svg" id="3_xb203"]
 [ext_resource type="FontFile" uid="uid://dl03uikmd6q6u" path="res://assets/fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="4_ducuf"]
-[ext_resource type="Resource" uid="uid://befnl8ueev0ur" path="res://interaction/test/talk.tres" id="4_iprv4"]
-[ext_resource type="Resource" uid="uid://byssvvd5jql0t" path="res://interaction/test/trade.tres" id="5_1ypwy"]
 [ext_resource type="Script" uid="uid://b811rpdhwhwf7" path="res://globals/environment_quality.gd" id="5_envq"]
 [ext_resource type="Script" uid="uid://ctm8aywag0cbg" path="res://scenes/game_scene/day_night_cycle.gd" id="6_dayn"]
-[ext_resource type="Script" uid="uid://bl4hax3ixva8r" path="res://interaction/interactable.gd" id="7_intr"]
-[ext_resource type="Script" uid="uid://3pxvrrbypq4e" path="res://interaction/test/test_interactable_logger.gd" id="8_log"]
-[ext_resource type="Resource" path="res://interaction/test/inspect.tres" id="9_insp"]
-[ext_resource type="Resource" uid="uid://358wrj4poxuc" path="res://interaction/test/pry_open.tres" id="10_pry"]
-[ext_resource type="Script" uid="uid://c4dv1aa5ym544" path="res://interaction/interaction_option.gd" id="11_iopt"]
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
-[ext_resource type="PackedScene" path="res://interaction/items/item_pickup.tscn" id="13_pickup"]
-[ext_resource type="Resource" path="res://interaction/items/crowbar.tres" id="14_crow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grid"]
 render_priority = 0
@@ -29,10 +20,6 @@ shader_parameter/line_width = 0.02
 shader_parameter/major_line_width = 0.05
 shader_parameter/major_every = 10
 shader_parameter/roughness = 0.9
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72663"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture_msdf = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -65,40 +52,9 @@ base_font = ExtResource("4_ducuf")
 [node name="Ground" type="CSGBox3D" parent="Greyboxing" unique_id=1090066014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
-size = Vector3(100, 2, 100)
+collision_layer = 3
+size = Vector3(2000, 2, 2000)
 material = SubResource("ShaderMaterial_grid")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Greyboxing" unique_id=1854607382]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -5.5)
-use_collision = true
-collision_layer = 3
-material = SubResource("StandardMaterial3D_72663")
-
-[node name="Interactable" type="Node" parent="Greyboxing/CSGBox3D" unique_id=883346870]
-script = ExtResource("7_intr")
-options = Array[ExtResource("11_iopt")]([ExtResource("4_iprv4"), ExtResource("5_1ypwy"), ExtResource("9_insp"), ExtResource("10_pry")])
-display_name = "TEST_BOX"
-
-[node name="Logger" type="Node" parent="Greyboxing/CSGBox3D" unique_id=943687791]
-script = ExtResource("8_log")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Greyboxing" unique_id=1792475481]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -5.5)
-use_collision = true
-collision_layer = 3
-material = SubResource("StandardMaterial3D_72663")
-
-[node name="Interactable" type="Node" parent="Greyboxing/CSGBox3D3" unique_id=1027430870]
-script = ExtResource("7_intr")
-options = Array[ExtResource("11_iopt")]([ExtResource("4_iprv4"), ExtResource("5_1ypwy"), ExtResource("9_insp"), ExtResource("10_pry")])
-display_name = "TEST_BOX"
-
-[node name="Logger" type="Node" parent="Greyboxing/CSGBox3D3" unique_id=97169160]
-script = ExtResource("8_log")
-
-[node name="CrowbarPickup" parent="Greyboxing" unique_id=2095572285 instance=ExtResource("13_pickup")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -2)
-item = ExtResource("14_crow")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Greyboxing" unique_id=739866090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -5.5)

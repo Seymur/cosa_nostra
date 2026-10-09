@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://sm8rinmhbyli" path="res://input/default/actions/look.tres" id="5_kb1hc"]
 [ext_resource type="Resource" uid="uid://36fj7v4t1reo" path="res://input/default/actions/speed_up.tres" id="6_g5mxx"]
 [ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="7_e7mj6"]
-[ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="8_inter"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 radius = 0.3
@@ -21,19 +20,11 @@ jump_action = ExtResource("4_84iq6")
 look_action = ExtResource("5_kb1hc")
 speed_up_action = ExtResource("6_g5mxx")
 speed_down_action = ExtResource("7_e7mj6")
-interact_action = ExtResource("8_inter")
 
 [node name="Head" type="Node3D" parent="." unique_id=1537407369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=1689887676]
-
-[node name="InteractRay" type="RayCast3D" parent="Head/Camera" unique_id=1127383406]
-target_position = Vector3(0, 0, -3)
-collision_mask = 2
-
-[node name="HeldItem" type="Node3D" parent="Head/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1493461509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

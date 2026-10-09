@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="InteractionOption" format=3 uid="uid://befnl8ueev0ur"]
-
-[ext_resource type="Script" uid="uid://c4dv1aa5ym544" path="res://interaction/interaction_option.gd" id="1_tpd7d"]
-
-[resource]
-script = ExtResource("1_tpd7d")
-id = &"Talk"
-label = "INTERACT_TALK"
-metadata/_custom_type_script = "uid://c4dv1aa5ym544"

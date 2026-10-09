@@ -19,10 +19,9 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 GUIDE="*uid://p2jwrgjcbexr"
 GameClock="*uid://b1f5ae7urcdis"
 Localization="*res://globals/localization.gd"
-DisplaySettings="*res://globals/display_settings.gd"
 UIManager="*res://globals/ui_manager.gd"
 GameControl="*res://globals/game_control.gd"
-Equipment="*res://globals/equipment.gd"
+DisplaySettings="*res://globals/display_settings.gd"
 
 [display]
 
@@ -62,4 +61,3 @@ anti_aliasing/quality/msaa_2d=3
 anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/use_debanding=true
 anti_aliasing/quality/screen_space_aa=2
-anti_aliasing/quality/use_taa=true

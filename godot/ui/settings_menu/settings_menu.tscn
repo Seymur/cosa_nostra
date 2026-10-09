@@ -39,14 +39,13 @@ theme_override_constants/margin_bottom = 64
 [node name="TabContainer" type="TabContainer" parent="ColorRect/MarginContainer" unique_id=1860883065]
 layout_mode = 2
 theme = ExtResource("1_cobfr")
-current_tab = 1
+current_tab = 0
 tab_0/title = "SETTINGS_TAB_GENERAL"
 tab_1/title = "SETTINGS_TAB_GRAPHICS"
 tab_2/title = "SETTINGS_TAB_AUDIO"
 tab_3/title = "SETTINGS_TAB_CONTROLS"
 
 [node name="General" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=547909626]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 metadata/_tab_index = 0
@@ -77,6 +76,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="Graphics" type="MarginContainer" parent="ColorRect/MarginContainer/TabContainer" unique_id=1155381595]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 16
 metadata/_tab_index = 1
