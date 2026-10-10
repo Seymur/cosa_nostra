@@ -7,7 +7,11 @@
 [ext_resource type="FontFile" uid="uid://dl03uikmd6q6u" path="res://assets/fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="4_ducuf"]
 [ext_resource type="Script" uid="uid://b811rpdhwhwf7" path="res://globals/environment_quality.gd" id="5_envq"]
 [ext_resource type="Script" uid="uid://ctm8aywag0cbg" path="res://scenes/game_scene/day_night_cycle.gd" id="6_dayn"]
+[ext_resource type="PackedScene" uid="uid://bbrujw662kol" path="res://props/equippables/equippable.tscn" id="9_j6s53"]
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
+albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_grid"]
 render_priority = 0
@@ -21,8 +25,8 @@ shader_parameter/major_line_width = 0.05
 shader_parameter/major_every = 10
 shader_parameter/roughness = 0.9
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
-albedo_color = Color(0, 1, 0, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4v7s"]
+size = Vector3(2000, 2, 2000)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57qmd"]
 
@@ -49,13 +53,6 @@ base_font = ExtResource("4_ducuf")
 
 [node name="Greyboxing" type="Node3D" parent="." unique_id=286349983]
 
-[node name="Ground" type="CSGBox3D" parent="Greyboxing" unique_id=1090066014]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-use_collision = true
-collision_layer = 3
-size = Vector3(2000, 2, 2000)
-material = SubResource("ShaderMaterial_grid")
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="Greyboxing" unique_id=739866090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -5.5)
 use_collision = true
@@ -68,6 +65,18 @@ light_color = Color(0.3796332, 0.30806342, 1, 1)
 light_energy = 16.0
 shadow_enabled = true
 omni_attenuation = 0.0
+
+[node name="Ground" type="StaticBody3D" parent="Greyboxing" unique_id=934140722]
+
+[node name="Ground" type="CSGBox3D" parent="Greyboxing/Ground" unique_id=1090066014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 3
+size = Vector3(2000, 2, 2000)
+material = SubResource("ShaderMaterial_grid")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Greyboxing/Ground" unique_id=1566917769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_g4v7s")
 
 [node name="Lighting&Environment" type="Node3D" parent="." unique_id=1410617370 node_paths=PackedStringArray("sun", "world_env")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -136,3 +145,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("3_o81xq")
 text = "12 Jan 2020 22:50"
+
+[node name="Equippable" parent="." unique_id=1830547589 instance=ExtResource("9_j6s53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0051379204, 1.1847534, -0.9179658)
