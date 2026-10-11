@@ -15,6 +15,8 @@ extends Interactable
 @export var allows_interact_fallthrough := true
 ## Name shown for this item in the hotbar.
 @export var display_name := ""
+## Icon shown for this item in the hotbar. The name is shown instead when unset.
+@export var icon: Texture2D
 
 var _saved_layer: int
 var _saved_mask: int

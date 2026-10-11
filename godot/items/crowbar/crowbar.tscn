@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjvdh5hbp5bqk" path="res://items/crowbar/crowbar.gd" id="1_vcld2"]
 [ext_resource type="Resource" uid="uid://dse2u4nn1ony5" path="res://input/items/crowbar/crowbar.tres" id="2_context"]
 [ext_resource type="Resource" path="res://input/items/crowbar/crowbar_primary.tres" id="3_primary"]
+[ext_resource type="Texture2D" path="res://assets/textures/icons/crowbar_weapon.png" id="4_icon"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vq4mf"]
 resource_name = "Crowbar"
@@ -78,6 +79,7 @@ script = ExtResource("1_vcld2")
 primary_action = ExtResource("3_primary")
 mapping_context = ExtResource("2_context")
 display_name = "Crowbar"
+icon = ExtResource("4_icon")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1238340564]
 

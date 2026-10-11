@@ -2,9 +2,13 @@ extends HBoxContainer
 
 const SLOT_SIZE := Vector2(64, 64)
 
+## Icon for the bare-hands slot.
+@export var bare_hands_icon: Texture2D
+
 var _player: Node
 var _slots: Array[PanelContainer] = []
 var _name_labels: Array[Label] = []
+var _icons: Array[TextureRect] = []
 
 var _normal_style := _make_style(Color(0, 0, 0, 0.5), Color(1, 1, 1, 0.25), 2)
 var _selected_style := _make_style(Color(0, 0, 0, 0.7), Color(1, 1, 1, 1), 3)
@@ -23,6 +27,12 @@ func _add_slot(index: int) -> void:
 	var slot := PanelContainer.new()
 	slot.custom_minimum_size = SLOT_SIZE
 	slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	var icon := TextureRect.new()
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	slot.add_child(icon)
 
 	var name_label := Label.new()
 	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -43,11 +53,21 @@ func _add_slot(index: int) -> void:
 	add_child(slot)
 	_slots.append(slot)
 	_name_labels.append(name_label)
+	_icons.append(icon)
 
 func _refresh() -> void:
 	for i in _slots.size():
 		var item: Equippable = _player.hotbar[i]
-		_name_labels[i].text = item.display_name if item else ""
+		var icon: Texture2D = null
+		var label := ""
+		if i == _player.BARE_HANDS_SLOT:
+			icon = bare_hands_icon
+			label = "Hands"
+		elif item:
+			icon = item.icon
+			label = item.display_name
+		_icons[i].texture = icon
+		_name_labels[i].text = "" if icon else label
 		_slots[i].add_theme_stylebox_override("panel", _selected_style if i == _player.selected_slot else _normal_style)
 
 func _make_style(background: Color, border: Color, border_width: int) -> StyleBoxFlat:

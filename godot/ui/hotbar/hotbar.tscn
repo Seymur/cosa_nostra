@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://ui/hotbar/hotbar.gd" id="1_hotbar"]
+[ext_resource type="Texture2D" path="res://assets/textures/icons/bare_hands.png" id="2_hands"]
 
 [node name="Hotbar" type="HBoxContainer"]
 anchors_preset = 7
@@ -15,3 +16,4 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 6
 script = ExtResource("1_hotbar")
+bare_hands_icon = ExtResource("2_hands")

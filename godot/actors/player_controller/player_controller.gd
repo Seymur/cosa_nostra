@@ -39,6 +39,8 @@ var hotbar: Array[Equippable] = []
 var selected_slot := 0
 
 const HOTBAR_SIZE = 5
+## Slot 0 never holds an item; selecting it leaves the hands empty.
+const BARE_HANDS_SLOT = 0
 
 const SPEED = 5.0
 const CROUCH_SPEED = 2.5
@@ -86,12 +88,21 @@ func _on_interaction_action_triggered(action: GUIDEAction) -> void:
 	elif is_instance_valid(focused_interactable):
 		focused_interactable.on_action(action)
 
-## Puts `item` into the selected hotbar slot (or the first free one, which then
+## First empty item slot, skipping the bare-hands slot. -1 when all are taken.
+func _find_free_slot() -> int:
+	for i in range(1, HOTBAR_SIZE):
+		if hotbar[i] == null:
+			return i
+	return -1
+
+## Puts `item` into the selected hotbar slot (or the first free item slot, which then
 ## becomes selected) and holds it. Does nothing when the hotbar is full.
 func pick_up(item: Equippable) -> void:
 	if held_item:
 		return
-	var slot := selected_slot if hotbar[selected_slot] == null else hotbar.find(null)
+	var slot := selected_slot
+	if slot == BARE_HANDS_SLOT or hotbar[slot] != null:
+		slot = _find_free_slot()
 	if slot == -1:
 		return
 	hotbar[slot] = item
