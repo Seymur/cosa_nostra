@@ -16,7 +16,6 @@ func _ready() -> void:
 	outline_mesh = $Door/Mesh/Outline
 
 func on_action(action: GUIDEAction) -> void:
-	print(action)
 	if action == interact_action:
 		toggle()
 

@@ -1,10 +1,13 @@
 class_name Crowbar
 extends Equippable
 
-# Called when the node enters the scene tree for the first time.
+## Fired by the left click while the crowbar is held.
+@export var primary_action: GUIDEAction
+
 func _ready() -> void:
 	outline_mesh = $RigidBody3D/Mesh/Outline
+	body = $RigidBody3D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func on_action(action: GUIDEAction) -> void:
+	if action == primary_action:
+		print("Crowbar swing")

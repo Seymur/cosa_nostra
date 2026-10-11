@@ -7,6 +7,9 @@ extends CharacterBody3D
 @export var speed_up_action: GUIDEAction;
 @export var speed_down_action: GUIDEAction;
 @export var crouch_action: GUIDEAction;
+@export var drop_action: GUIDEAction;
+## The action that picks up a focused Equippable. Must also be in interaction_actions.
+@export var interact_action: GUIDEAction;
 ## Actions forwarded to the focused interactable when they fire. The interactable
 ## decides what each one does.
 @export var interaction_actions: Array[GUIDEAction];
@@ -21,10 +24,12 @@ extends CharacterBody3D
 @onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
 
 var focused_interactable: Interactable
+var held_item: Equippable
 
 const SPEED = 5.0
 const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
+const DROP_SPEED = 2.0
 
 const STAND_HEIGHT = 1.8
 const CROUCH_HEIGHT = 1.0
@@ -42,11 +47,43 @@ func _ready() -> void:
 	speed_down_action.triggered.connect(_on_speed_down_triggered)
 	for action in interaction_actions:
 		action.just_triggered.connect(_on_interaction_action_triggered.bind(action))
+	drop_action.just_triggered.connect(unequip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+## While an item is held, its actions go to the focused interactable first (an
+## item-specific interaction, else a plain interact) and only reach the item when
+## nothing is focused. Without a held item they go to whatever is focused.
 func _on_interaction_action_triggered(action: GUIDEAction) -> void:
-	if is_instance_valid(focused_interactable):
+	if held_item:
+		if is_instance_valid(focused_interactable):
+			if not focused_interactable.on_item_action(held_item, action):
+				focused_interactable.on_action(interact_action)
+		else:
+			held_item.on_action(action)
+	elif action == interact_action and focused_interactable is Equippable:
+		equip(focused_interactable)
+	elif is_instance_valid(focused_interactable):
 		focused_interactable.on_action(action)
+
+## Holds `item` and enables its mapping context above the default one, so the
+## inputs it binds (e.g. left click) fire the item's actions instead.
+func equip(item: Equippable) -> void:
+	if held_item:
+		return
+	set_focused_interactable(null)
+	held_item = item
+	item.equip(head)
+	if item.mapping_context:
+		GUIDE.enable_mapping_context(item.mapping_context, false, -1)
+
+func unequip() -> void:
+	if not held_item:
+		return
+	var item := held_item
+	held_item = null
+	if item.mapping_context:
+		GUIDE.disable_mapping_context(item.mapping_context)
+	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
 
 func _on_speed_up_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier * 2.0)

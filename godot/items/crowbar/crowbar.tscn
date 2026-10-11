@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://btau7ksbmytfn"]
 
 [ext_resource type="Script" uid="uid://bjvdh5hbp5bqk" path="res://items/crowbar/crowbar.gd" id="1_vcld2"]
+[ext_resource type="Resource" path="res://input/items/crowbar/crowbar.tres" id="2_context"]
+[ext_resource type="Resource" path="res://input/items/crowbar/crowbar_primary.tres" id="3_primary"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vq4mf"]
 resource_name = "Crowbar"
@@ -73,6 +75,8 @@ points = PackedVector3Array(0.025935758, -0.5096933, 0.04509404, -0.029142383, -
 
 [node name="Crowbar" type="Node3D" unique_id=1814754748]
 script = ExtResource("1_vcld2")
+mapping_context = ExtResource("2_context")
+primary_action = ExtResource("3_primary")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1238340564]
 

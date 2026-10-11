@@ -1,5 +1,5 @@
 class_name Interactable
-extends Node
+extends Node3D
 
 var outline_mesh: Node3D
 
@@ -16,3 +16,9 @@ func hide_outline():
 ## exported actions to decide what it does.
 func on_action(action: GUIDEAction) -> void:
 	pass
+
+## Called when a held item's action fires while this interactable is focused.
+## Return true to handle it with an item-specific interaction; when false the
+## player falls back to the plain interact action, as if nothing were held.
+func on_item_action(item: Interactable, action: GUIDEAction) -> bool:
+	return false

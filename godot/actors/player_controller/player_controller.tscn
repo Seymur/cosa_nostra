@@ -9,6 +9,8 @@
 [ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="7_e7mj6"]
 [ext_resource type="Resource" path="res://input/default/actions/crouch.tres" id="8_crouch"]
 [ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="9_interact"]
+[ext_resource type="Resource" path="res://input/default/actions/drop.tres" id="11_drop"]
+[ext_resource type="Resource" path="res://input/items/crowbar/crowbar_primary.tres" id="12_crowbar_primary"]
 [ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="10_action"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
@@ -28,7 +30,9 @@ look_action = ExtResource("5_kb1hc")
 speed_up_action = ExtResource("6_g5mxx")
 speed_down_action = ExtResource("7_e7mj6")
 crouch_action = ExtResource("8_crouch")
-interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact")])
+drop_action = ExtResource("11_drop")
+interact_action = ExtResource("9_interact")
+interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact"), ExtResource("12_crowbar_primary")])
 
 [node name="Head" type="Node3D" parent="." unique_id=1537407369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
