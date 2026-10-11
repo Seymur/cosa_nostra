@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://fopnbntmik6c" path="res://props/door/door.tscn" id="10_dgii4"]
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
+[ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -105,6 +106,9 @@ mouse_filter = 1
 script = ExtResource("2_72663")
 
 [node name="Crosshair" parent="GameSceneUI" unique_id=1554955450 instance=ExtResource("13_xhair")]
+layout_mode = 1
+
+[node name="Hotbar" parent="GameSceneUI" instance=ExtResource("14_hotbar")]
 layout_mode = 1
 
 [node name="GameClockContainer" type="MarginContainer" parent="GameSceneUI" unique_id=1235873606]

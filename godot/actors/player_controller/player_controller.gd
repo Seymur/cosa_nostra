@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+## Emitted when an item enters or leaves a hotbar slot.
+signal hotbar_changed
+## Emitted when the selected hotbar slot changes.
+signal selected_slot_changed(slot: int)
+
 @export var default_mapping_context: GUIDEMappingContext;
 @export var move_action: GUIDEAction;
 @export var jump_action: GUIDEAction;
@@ -8,6 +13,9 @@ extends CharacterBody3D
 @export var speed_down_action: GUIDEAction;
 @export var crouch_action: GUIDEAction;
 @export var drop_action: GUIDEAction;
+## Fire to select the next / previous hotbar slot (mouse wheel).
+@export var hotbar_next_action: GUIDEAction;
+@export var hotbar_previous_action: GUIDEAction;
 ## The action that picks up a focused Equippable. Must also be in interaction_actions.
 @export var interact_action: GUIDEAction;
 ## Actions forwarded to the focused interactable when they fire. The interactable
@@ -24,7 +32,13 @@ extends CharacterBody3D
 @onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
 
 var focused_interactable: Interactable
+## The item in the hand, which is always the one in the selected hotbar slot.
 var held_item: Equippable
+## Quick-slot contents, null for an empty slot.
+var hotbar: Array[Equippable] = []
+var selected_slot := 0
+
+const HOTBAR_SIZE = 5
 
 const SPEED = 5.0
 const CROUCH_SPEED = 2.5
@@ -40,6 +54,8 @@ const CROUCH_TRANSITION_SPEED = 10.0
 var is_crouching := false
 
 func _ready() -> void:
+	add_to_group("player")
+	hotbar.resize(HOTBAR_SIZE)
 	shape_cast_3d.add_exception(self)
 	GUIDE.enable_mapping_context(default_mapping_context)
 	look_action.triggered.connect(_on_look_triggered)
@@ -48,6 +64,8 @@ func _ready() -> void:
 	for action in interaction_actions:
 		action.just_triggered.connect(_on_interaction_action_triggered.bind(action))
 	drop_action.just_triggered.connect(unequip)
+	hotbar_next_action.just_triggered.connect(select_slot_relative.bind(1))
+	hotbar_previous_action.just_triggered.connect(select_slot_relative.bind(-1))
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 ## While an item is held, its actions go to the focused interactable first as an
@@ -64,31 +82,69 @@ func _on_interaction_action_triggered(action: GUIDEAction) -> void:
 		else:
 			held_item.on_action(action)
 	elif action == interact_action and focused_interactable is Equippable:
-		equip(focused_interactable)
+		pick_up(focused_interactable)
 	elif is_instance_valid(focused_interactable):
 		focused_interactable.on_action(action)
 
-## Holds `item` and enables its mapping context above the default one, so the
-## inputs it binds (e.g. left click) fire the item's actions instead.
-func equip(item: Equippable) -> void:
+## Puts `item` into the selected hotbar slot (or the first free one, which then
+## becomes selected) and holds it. Does nothing when the hotbar is full.
+func pick_up(item: Equippable) -> void:
 	if held_item:
 		return
+	var slot := selected_slot if hotbar[selected_slot] == null else hotbar.find(null)
+	if slot == -1:
+		return
+	hotbar[slot] = item
+	if slot != selected_slot:
+		selected_slot = slot
+		selected_slot_changed.emit(slot)
+	_hold(hotbar[slot])
+	hotbar_changed.emit()
+
+## Selects `slot`, wrapping around the hotbar, and holds its item if it has one.
+## Whatever was held goes back into its slot.
+func select_slot(slot: int) -> void:
+	slot = posmod(slot, HOTBAR_SIZE)
+	if slot == selected_slot:
+		return
+	if held_item:
+		var previous := _release_hand()
+		previous.stow(head)
+	selected_slot = slot
+	if hotbar[slot]:
+		_hold(hotbar[slot])
+	selected_slot_changed.emit(slot)
+
+func select_slot_relative(step: int) -> void:
+	select_slot(selected_slot + step)
+
+## Holds `item` and enables its mapping context above the default one, so the
+## inputs it binds (e.g. left click) fire the item's actions instead.
+func _hold(item: Equippable) -> void:
 	set_focused_interactable(null)
 	held_item = item
 	item.equip(head)
 	if item.mapping_context:
 		GUIDE.enable_mapping_context(item.mapping_context, false, -1)
 
-func unequip() -> void:
-	if not held_item:
-		return
+## Empties the hand and disables the item's mapping context. Returns the item.
+func _release_hand() -> Equippable:
 	var item := held_item
 	held_item = null
 	# Refocus next physics frame so the outline reappears if it was suppressed.
 	set_focused_interactable(null)
 	if item.mapping_context:
 		GUIDE.disable_mapping_context(item.mapping_context)
+	return item
+
+## Drops the held item into the world and frees its hotbar slot.
+func unequip() -> void:
+	if not held_item:
+		return
+	var item := _release_hand()
+	hotbar[selected_slot] = null
 	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
+	hotbar_changed.emit()
 
 func _on_speed_up_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier * 2.0)
