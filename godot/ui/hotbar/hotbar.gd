@@ -1,6 +1,7 @@
 extends HBoxContainer
 
 const SLOT_SIZE := Vector2(64, 64)
+const FIXED_SLOT_SHADER := preload("res://ui/hotbar/fixed_slot_stripes.gdshader")
 
 ## Icon for the bare-hands slot.
 @export var bare_hands_icon: Texture2D
@@ -28,6 +29,13 @@ func _add_slot(index: int) -> void:
 	slot.custom_minimum_size = SLOT_SIZE
 	slot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
+	if index == _player.BARE_HANDS_SLOT:
+		var stripes := ColorRect.new()
+		stripes.material = ShaderMaterial.new()
+		stripes.material.shader = FIXED_SLOT_SHADER
+		stripes.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		slot.add_child(stripes)
+
 	var icon := TextureRect.new()
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -41,14 +49,6 @@ func _add_slot(index: int) -> void:
 	name_label.add_theme_font_size_override("font_size", 12)
 	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	slot.add_child(name_label)
-
-	var number_label := Label.new()
-	number_label.text = str(index + 1)
-	number_label.add_theme_font_size_override("font_size", 10)
-	number_label.modulate = Color(1, 1, 1, 0.6)
-	number_label.position = Vector2(5, 2)
-	number_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	slot.add_child(number_label)
 
 	add_child(slot)
 	_slots.append(slot)
