@@ -5,6 +5,7 @@ extends Equippable
 @export var primary_action: GUIDEAction
 
 func _ready() -> void:
+	allows_interact_fallthrough = false
 	outline_mesh = $RigidBody3D/Mesh/Outline
 	body = $RigidBody3D
 

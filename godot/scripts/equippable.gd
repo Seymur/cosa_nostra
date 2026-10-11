@@ -9,6 +9,10 @@ extends Interactable
 @export var held_position := Vector3(0.3, -0.3, -0.6)
 @export var held_rotation_degrees := Vector3(-70, 0, 0)
 @export var body: RigidBody3D
+## When true, a click on a focused interactable that has no item-specific
+## reaction interacts with it as if nothing were held. Set false for items
+## (e.g. a gun) whose click should always go to the item.
+@export var allows_interact_fallthrough := true
 
 var _saved_layer: int
 var _saved_mask: int

@@ -50,14 +50,17 @@ func _ready() -> void:
 	drop_action.just_triggered.connect(unequip)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-## While an item is held, its actions go to the focused interactable first (an
-## item-specific interaction, else a plain interact) and only reach the item when
-## nothing is focused. Without a held item they go to whatever is focused.
+## While an item is held, its actions go to the focused interactable first as an
+## item-specific interaction. If that is unhandled they fall back to a plain interact
+## (when the item allows it), and otherwise reach the item. Without a held item they
+## go to whatever is focused.
 func _on_interaction_action_triggered(action: GUIDEAction) -> void:
 	if held_item:
-		if is_instance_valid(focused_interactable):
-			if not focused_interactable.on_item_action(held_item, action):
-				focused_interactable.on_action(interact_action)
+		var target: Interactable = focused_interactable if is_instance_valid(focused_interactable) else null
+		if target and target.on_item_action(held_item, action):
+			return
+		if target and held_item.allows_interact_fallthrough:
+			target.on_action(interact_action)
 		else:
 			held_item.on_action(action)
 	elif action == interact_action and focused_interactable is Equippable:
@@ -81,6 +84,8 @@ func unequip() -> void:
 		return
 	var item := held_item
 	held_item = null
+	# Refocus next physics frame so the outline reappears if it was suppressed.
+	set_focused_interactable(null)
 	if item.mapping_context:
 		GUIDE.disable_mapping_context(item.mapping_context)
 	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
@@ -129,8 +134,12 @@ func set_focused_interactable(interactable: Interactable) -> void:
 	if is_instance_valid(focused_interactable):
 		focused_interactable.hide_outline()
 	focused_interactable = interactable
-	if focused_interactable:
+	if focused_interactable and _can_show_outline():
 		focused_interactable.show_outline()
+
+# An item whose click never interacts shouldn't make interactables look clickable.
+func _can_show_outline() -> bool:
+	return held_item == null or held_item.allows_interact_fallthrough
 
 ## Crouching is hold-to-crouch. Standing back up is blocked while something is
 ## directly overhead.
