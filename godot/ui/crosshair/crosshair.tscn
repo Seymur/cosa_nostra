@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://ui/crosshair/crosshair.gdshader" id="1_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dot"]
+shader = ExtResource("1_shader")
+shader_parameter/color = Color(1, 1, 1, 0.9)
+shader_parameter/outline_color = Color(0, 0, 0, 0.6)
+shader_parameter/radius = 1.5
+shader_parameter/outline_width = 1.0
+
+[node name="Crosshair" type="ColorRect"]
+material = SubResource("ShaderMaterial_dot")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
