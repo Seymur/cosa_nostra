@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://dl03uikmd6q6u" path="res://assets/fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth,wght.ttf" id="4_ducuf"]
 [ext_resource type="Script" uid="uid://b811rpdhwhwf7" path="res://globals/environment_quality.gd" id="5_envq"]
 [ext_resource type="Script" uid="uid://ctm8aywag0cbg" path="res://scenes/game_scene/day_night_cycle.gd" id="6_dayn"]
+[ext_resource type="PackedScene" uid="uid://btau7ksbmytfn" path="res://items/crowbar/crowbar.tscn" id="9_j6s53"]
+[ext_resource type="PackedScene" uid="uid://fopnbntmik6c" path="res://props/door/door.tscn" id="10_dgii4"]
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
@@ -144,3 +146,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 theme = ExtResource("3_o81xq")
 text = "12 Jan 2020 22:50"
+
+[node name="Crowbar" parent="." unique_id=1814754748 instance=ExtResource("9_j6s53")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.0313625, 0.5300607, -6.447211)
+
+[node name="Door" parent="." unique_id=1971418593 instance=ExtResource("10_dgii4")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3, 0, -6)

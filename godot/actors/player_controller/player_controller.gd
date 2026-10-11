@@ -11,10 +11,16 @@ extends CharacterBody3D
 @export var horizontal_sensitivity = 0.1
 @export var vertical_sensitivity = 0.1
 
+@onready var camera: Camera3D = $Head/Camera
+@onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
+
+var focused_interactable: Interactable
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 func _ready() -> void:
+	shape_cast_3d.add_exception(self)
 	GUIDE.enable_mapping_context(default_mapping_context)
 	look_action.triggered.connect(_on_look_triggered)
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
@@ -32,7 +38,45 @@ func _on_look_triggered():
 	$Head.rotate_x(-deg_to_rad(look_action.value_axis_2d.y) * vertical_sensitivity)
 	$Head.rotation_degrees.x = clamp($Head.rotation_degrees.x, -89, 89)
 
+## Returns the Interactable whose hit point in the shape cast is closest to the camera,
+## or null if the sweep hit no interactable. Call it from _physics_process, after the
+## shape cast has updated.
+func find_closest_interactable() -> Interactable:
+	var closest: Interactable = null
+	var closest_distance := INF
+	for i in shape_cast_3d.get_collision_count():
+		var interactable := _find_interactable(shape_cast_3d.get_collider(i))
+		if interactable == null:
+			continue
+		var distance := camera.global_position.distance_squared_to(shape_cast_3d.get_collision_point(i))
+		if distance < closest_distance:
+			closest_distance = distance
+			closest = interactable
+	return closest
+
+# Interactables are usually a parent of the physics body that got hit, so walk up the tree.
+func _find_interactable(node: Node) -> Interactable:
+	while node:
+		if node is Interactable:
+			return node
+		node = node.get_parent()
+	return null
+
+## Moves focus to `interactable` (or clears it when null): hides the outline of the
+## previously focused one and shows the outline of the new one.
+func set_focused_interactable(interactable: Interactable) -> void:
+	if interactable == focused_interactable:
+		return
+	# The previous one may have been freed (e.g. picked up) since the last frame.
+	if is_instance_valid(focused_interactable):
+		focused_interactable.hide_outline()
+	focused_interactable = interactable
+	if focused_interactable:
+		focused_interactable.show_outline()
+
 func _physics_process(delta: float) -> void:
+	set_focused_interactable(find_closest_interactable())
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

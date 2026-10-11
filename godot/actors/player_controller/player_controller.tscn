@@ -8,6 +8,10 @@
 [ext_resource type="Resource" uid="uid://36fj7v4t1reo" path="res://input/default/actions/speed_up.tres" id="6_g5mxx"]
 [ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="7_e7mj6"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
+height = 4.0
+radius = 0.1
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 radius = 0.3
 height = 1.8
@@ -25,6 +29,10 @@ speed_down_action = ExtResource("7_e7mj6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=1689887676]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Head/Camera" unique_id=840833547]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
+shape = SubResource("CylinderShape3D_g4v7s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1493461509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
