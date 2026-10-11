@@ -6,18 +6,33 @@ extends CharacterBody3D
 @export var look_action: GUIDEAction;
 @export var speed_up_action: GUIDEAction;
 @export var speed_down_action: GUIDEAction;
+@export var crouch_action: GUIDEAction;
+## Actions forwarded to the focused interactable when they fire. The interactable
+## decides what each one does.
+@export var interaction_actions: Array[GUIDEAction];
 
 @export_group("Mouse")
 @export var horizontal_sensitivity = 0.1
 @export var vertical_sensitivity = 0.1
 
+@onready var head: Node3D = $Head
+@onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var camera: Camera3D = $Head/Camera
 @onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
 
 var focused_interactable: Interactable
 
 const SPEED = 5.0
+const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
+
+const STAND_HEIGHT = 1.8
+const CROUCH_HEIGHT = 1.0
+const STAND_EYE_HEIGHT = 1.65
+const CROUCH_EYE_HEIGHT = 0.95
+const CROUCH_TRANSITION_SPEED = 10.0
+
+var is_crouching := false
 
 func _ready() -> void:
 	shape_cast_3d.add_exception(self)
@@ -25,7 +40,13 @@ func _ready() -> void:
 	look_action.triggered.connect(_on_look_triggered)
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
 	speed_down_action.triggered.connect(_on_speed_down_triggered)
+	for action in interaction_actions:
+		action.just_triggered.connect(_on_interaction_action_triggered.bind(action))
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _on_interaction_action_triggered(action: GUIDEAction) -> void:
+	if is_instance_valid(focused_interactable):
+		focused_interactable.on_action(action)
 
 func _on_speed_up_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier * 2.0)
@@ -74,8 +95,30 @@ func set_focused_interactable(interactable: Interactable) -> void:
 	if focused_interactable:
 		focused_interactable.show_outline()
 
+## Crouching is hold-to-crouch. Standing back up is blocked while something is
+## directly overhead.
+func _update_crouch(delta: float) -> void:
+	var wants_crouch := crouch_action.is_triggered()
+	if wants_crouch:
+		is_crouching = true
+	elif is_crouching and _can_stand_up():
+		is_crouching = false
+
+	var height := CROUCH_HEIGHT if is_crouching else STAND_HEIGHT
+	var capsule := collision_shape.shape as CapsuleShape3D
+	if capsule.height != height:
+		capsule.height = height
+		collision_shape.position.y = height * 0.5
+
+	var eye_height := CROUCH_EYE_HEIGHT if is_crouching else STAND_EYE_HEIGHT
+	head.position.y = move_toward(head.position.y, eye_height, CROUCH_TRANSITION_SPEED * delta)
+
+func _can_stand_up() -> bool:
+	return not test_move(global_transform, Vector3.UP * (STAND_HEIGHT - CROUCH_HEIGHT))
+
 func _physics_process(delta: float) -> void:
 	set_focused_interactable(find_closest_interactable())
+	_update_crouch(delta)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -88,11 +131,12 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := move_action.value_axis_2d
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var speed := CROUCH_SPEED if is_crouching else SPEED
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
