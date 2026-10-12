@@ -14,6 +14,8 @@ signal selected_slot_changed(slot: int)
 @export var speed_up_action: GUIDEAction;
 @export var speed_down_action: GUIDEAction;
 @export var crouch_action: GUIDEAction;
+## Hold to run faster. Has no effect while crouching.
+@export var sprint_action: GUIDEAction;
 @export var drop_action: GUIDEAction;
 ## Fire to select the next / previous hotbar slot (mouse wheel).
 @export var hotbar_next_action: GUIDEAction;
@@ -54,6 +56,7 @@ const BARE_HANDS_SLOT = 0
 const INVENTORY_SIZE = 40
 
 const SPEED = 5.0
+const SPRINT_SPEED = 8.0
 const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 const DROP_SPEED = 2.0
@@ -345,7 +348,11 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir := move_action.value_axis_2d
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var speed := CROUCH_SPEED if is_crouching else SPEED
+	var speed := SPEED
+	if is_crouching:
+		speed = CROUCH_SPEED
+	elif sprint_action.is_triggered():
+		speed = SPRINT_SPEED
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed

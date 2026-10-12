@@ -15,6 +15,7 @@
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_next.tres" id="13_hotbar_next"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="14_hotbar_previous"]
 [ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="15_pistol_primary"]
+[ext_resource type="Resource" path="res://input/default/actions/sprint.tres" id="16_sprint"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
 height = 4.0
@@ -33,6 +34,7 @@ look_action = ExtResource("5_kb1hc")
 speed_up_action = ExtResource("6_g5mxx")
 speed_down_action = ExtResource("7_e7mj6")
 crouch_action = ExtResource("8_crouch")
+sprint_action = ExtResource("16_sprint")
 drop_action = ExtResource("11_drop")
 hotbar_next_action = ExtResource("13_hotbar_next")
 hotbar_previous_action = ExtResource("14_hotbar_previous")
