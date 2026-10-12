@@ -36,6 +36,12 @@ func _input(event: InputEvent) -> void:
 	UIManager.pop()
 	get_viewport().set_input_as_handled()
 
+# Esc closes the screen too, which frees the slots a drag may still point at.
+func _exit_tree() -> void:
+	var viewport := get_viewport()
+	if viewport and viewport.gui_is_dragging():
+		viewport.gui_cancel_drag()
+
 func _refresh() -> void:
 	for i in _slots.size():
 		var item: Equippable = _player.inventory[i]
