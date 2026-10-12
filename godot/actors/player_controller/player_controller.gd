@@ -54,6 +54,8 @@ const CROUCH_EYE_HEIGHT = 0.95
 const CROUCH_TRANSITION_SPEED = 10.0
 
 var is_crouching := false
+## True while a menu is open and the gameplay mapping contexts are disabled.
+var _input_blocked := false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -68,7 +70,24 @@ func _ready() -> void:
 	drop_action.just_triggered.connect(unequip)
 	hotbar_next_action.just_triggered.connect(select_slot_relative.bind(1))
 	hotbar_previous_action.just_triggered.connect(select_slot_relative.bind(-1))
+	UIManager.screen_changed.connect(_on_screen_changed)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+## Menus must not leak input into the game (scrolling, looking, clicking), so the
+## gameplay mapping contexts are off while any screen is open.
+func _on_screen_changed(top: Control) -> void:
+	var blocked := top != null
+	if blocked == _input_blocked:
+		return
+	_input_blocked = blocked
+	if blocked:
+		GUIDE.disable_mapping_context(default_mapping_context)
+		if held_item and held_item.mapping_context:
+			GUIDE.disable_mapping_context(held_item.mapping_context)
+	else:
+		GUIDE.enable_mapping_context(default_mapping_context)
+		if held_item and held_item.mapping_context:
+			GUIDE.enable_mapping_context(held_item.mapping_context, false, -1)
 
 ## While an item is held, its actions go to the focused interactable first as an
 ## item-specific interaction. If that is unhandled they fall back to a plain interact

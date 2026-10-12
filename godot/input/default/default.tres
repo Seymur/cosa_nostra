@@ -19,7 +19,6 @@
 [ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="16_interact"]
 [ext_resource type="Script" uid="uid://vgjlx6p007lp" path="res://addons/guide/inputs/guide_input_mouse_button.gd" id="17_mouse_button"]
 [ext_resource type="Resource" path="res://input/default/actions/drop.tres" id="18_drop"]
-
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_next.tres" id="19_hotbar_next"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="20_hotbar_previous"]
 
