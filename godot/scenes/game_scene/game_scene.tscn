@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
 [ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
 [ext_resource type="PackedScene" path="res://items/pistol/pistol.tscn" id="15_pistol"]
+[ext_resource type="PackedScene" path="res://items/cigarettes/cigarettes.tscn" id="16_cigarettes"]
+[ext_resource type="PackedScene" path="res://items/lighter/lighter.tscn" id="17_lighter"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -54,6 +56,12 @@ base_font = ExtResource("4_ducuf")
 [node name="GameScene" type="Node3D" unique_id=1768353959]
 
 [node name="Pistol" parent="." unique_id=35155755 instance=ExtResource("15_pistol")]
+
+[node name="Cigarettes" parent="." instance=ExtResource("16_cigarettes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3)
+
+[node name="Lighter" parent="." instance=ExtResource("17_lighter")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -3)
 
 [node name="PlayerController" parent="." unique_id=253727384 instance=ExtResource("1_pwder")]
 starting_hotbar_item_paths = Array[NodePath]([NodePath("../Pistol")])
