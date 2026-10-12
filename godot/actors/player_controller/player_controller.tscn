@@ -9,12 +9,12 @@
 [ext_resource type="Resource" uid="uid://lckr4fsu0pbf" path="res://input/default/actions/speed_down.tres" id="7_e7mj6"]
 [ext_resource type="Resource" path="res://input/default/actions/crouch.tres" id="8_crouch"]
 [ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="9_interact"]
+[ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="10_action"]
 [ext_resource type="Resource" path="res://input/default/actions/drop.tres" id="11_drop"]
 [ext_resource type="Resource" path="res://input/items/crowbar/crowbar_primary.tres" id="12_crowbar_primary"]
-[ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="15_pistol_primary"]
-[ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="10_action"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_next.tres" id="13_hotbar_next"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="14_hotbar_previous"]
+[ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="15_pistol_primary"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
 height = 4.0

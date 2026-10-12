@@ -8,11 +8,11 @@
 [ext_resource type="Script" uid="uid://b811rpdhwhwf7" path="res://globals/environment_quality.gd" id="5_envq"]
 [ext_resource type="Script" uid="uid://ctm8aywag0cbg" path="res://scenes/game_scene/day_night_cycle.gd" id="6_dayn"]
 [ext_resource type="PackedScene" uid="uid://btau7ksbmytfn" path="res://items/crowbar/crowbar.tscn" id="9_j6s53"]
-[ext_resource type="PackedScene" path="res://items/pistol/pistol.tscn" id="15_pistol"]
 [ext_resource type="PackedScene" uid="uid://fopnbntmik6c" path="res://props/door/door.tscn" id="10_dgii4"]
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
 [ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
+[ext_resource type="PackedScene" path="res://items/pistol/pistol.tscn" id="15_pistol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -53,7 +53,7 @@ base_font = ExtResource("4_ducuf")
 
 [node name="GameScene" type="Node3D" unique_id=1768353959]
 
-[node name="Pistol" parent="." instance=ExtResource("15_pistol")]
+[node name="Pistol" parent="." unique_id=35155755 instance=ExtResource("15_pistol")]
 
 [node name="PlayerController" parent="." unique_id=253727384 instance=ExtResource("1_pwder")]
 starting_hotbar_item_paths = Array[NodePath]([NodePath("../Pistol")])

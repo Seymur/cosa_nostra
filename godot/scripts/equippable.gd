@@ -45,6 +45,8 @@ func _carry(holder: Node3D) -> void:
 		body.collision_layer = 0
 		body.collision_mask = 0
 	reparent(holder, false)
+	# The body simulates independently of this root, so it may have fallen away from it.
+	body.transform = Transform3D.IDENTITY
 
 func drop(world: Node, from: Transform3D, impulse: Vector3) -> void:
 	_is_carried = false
