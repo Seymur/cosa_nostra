@@ -6,6 +6,7 @@ signal screen_changed(top: Control)
 
 const SETTINGS := preload("res://ui/settings_menu/settings_menu.tscn")
 const PAUSE := preload("res://ui/pause_menu/pause_menu.tscn")
+const INVENTORY := preload("res://ui/inventory/inventory.tscn")
 
 var _layer := CanvasLayer.new()
 var _stack: Array[Control] = []

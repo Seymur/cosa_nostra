@@ -120,7 +120,10 @@ script = ExtResource("2_72663")
 [node name="Crosshair" parent="GameSceneUI" unique_id=1554955450 instance=ExtResource("13_xhair")]
 layout_mode = 1
 
-[node name="Hotbar" parent="GameSceneUI" unique_id=85740502 instance=ExtResource("14_hotbar")]
+[node name="HotbarLayer" type="CanvasLayer" parent="GameSceneUI"]
+layer = 10
+
+[node name="Hotbar" parent="GameSceneUI/HotbarLayer" unique_id=85740502 instance=ExtResource("14_hotbar")]
 layout_mode = 1
 
 [node name="GameClockContainer" type="MarginContainer" parent="GameSceneUI" unique_id=1235873606]

@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 ## Emitted when an item enters or leaves a hotbar slot.
 signal hotbar_changed
+## Emitted when an item enters or leaves an inventory slot.
+signal inventory_changed
 ## Emitted when the selected hotbar slot changes.
 signal selected_slot_changed(slot: int)
 
@@ -39,11 +41,17 @@ var focused_interactable: Interactable
 var held_item: Equippable
 ## Quick-slot contents, null for an empty slot.
 var hotbar: Array[Equippable] = []
+## Backpack contents, null for an empty slot. Items here are stowed, never held.
+var inventory: Array[Equippable] = []
 var selected_slot := 0
 
-const HOTBAR_SIZE = 5
+## The two places an item can be kept. The hotbar counts as extra inventory.
+enum ItemStore { HOTBAR, INVENTORY }
+
+const HOTBAR_SIZE = 8
 ## Slot 0 never holds an item; selecting it leaves the hands empty.
 const BARE_HANDS_SLOT = 0
+const INVENTORY_SIZE = 40
 
 const SPEED = 5.0
 const CROUCH_SPEED = 2.5
@@ -63,6 +71,7 @@ var _input_blocked := false
 func _ready() -> void:
 	add_to_group("player")
 	hotbar.resize(HOTBAR_SIZE)
+	inventory.resize(INVENTORY_SIZE)
 	shape_cast_3d.add_exception(self)
 	GUIDE.enable_mapping_context(default_mapping_context)
 	look_action.triggered.connect(_on_look_triggered)
@@ -129,8 +138,55 @@ func _find_free_slot() -> int:
 			return i
 	return -1
 
+## First empty inventory slot. -1 when all are taken.
+func _find_free_inventory_slot() -> int:
+	return inventory.find(null)
+
+## The item kept at `index` of `container`, or null.
+func get_item(container: ItemStore, index: int) -> Equippable:
+	return _items_of(container)[index]
+
+func _items_of(container: ItemStore) -> Array[Equippable]:
+	return hotbar if container == ItemStore.HOTBAR else inventory
+
+## Moves the item at the source slot to the target slot, swapping with whatever is
+## there. The bare-hands slot can neither give nor receive items.
+func move_item(from_container: ItemStore, from_index: int, to_container: ItemStore, to_index: int) -> void:
+	if from_container == to_container and from_index == to_index:
+		return
+	if is_fixed_slot(from_container, from_index) or is_fixed_slot(to_container, to_index):
+		return
+	var from_items := _items_of(from_container)
+	var to_items := _items_of(to_container)
+	if from_items[from_index] == null:
+		return
+	var moved := from_items[from_index]
+	from_items[from_index] = to_items[to_index]
+	to_items[to_index] = moved
+	_sync_hand()
+	if from_container == ItemStore.HOTBAR or to_container == ItemStore.HOTBAR:
+		hotbar_changed.emit()
+	if from_container == ItemStore.INVENTORY or to_container == ItemStore.INVENTORY:
+		inventory_changed.emit()
+
+## True for the slot that never holds an item (the bare hands).
+func is_fixed_slot(container: ItemStore, index: int) -> bool:
+	return container == ItemStore.HOTBAR and index == BARE_HANDS_SLOT
+
+## Makes the hand match the selected slot after items were rearranged: whatever was
+## held is stowed and the slot's item, if any, is taken into the hand.
+func _sync_hand() -> void:
+	var wanted := hotbar[selected_slot]
+	if wanted == held_item:
+		return
+	if held_item:
+		_release_hand().stow(head)
+	if wanted:
+		_hold(wanted)
+
 ## Puts `item` into the selected hotbar slot (or the first free item slot, which then
-## becomes selected) and holds it. Does nothing when the hotbar is full.
+## becomes selected) and holds it. When the hotbar is full it is stowed in the
+## inventory instead, and does nothing when that is full too.
 func pick_up(item: Equippable) -> void:
 	if held_item:
 		return
@@ -138,6 +194,7 @@ func pick_up(item: Equippable) -> void:
 	if slot == BARE_HANDS_SLOT or hotbar[slot] != null:
 		slot = _find_free_slot()
 	if slot == -1:
+		_stow_in_inventory(item)
 		return
 	hotbar[slot] = item
 	if slot != selected_slot:
@@ -145,6 +202,15 @@ func pick_up(item: Equippable) -> void:
 		selected_slot_changed.emit(slot)
 	_hold(hotbar[slot])
 	hotbar_changed.emit()
+
+func _stow_in_inventory(item: Equippable) -> void:
+	var slot := _find_free_inventory_slot()
+	if slot == -1:
+		return
+	inventory[slot] = item
+	item.stow(head)
+	set_focused_interactable(null)
+	inventory_changed.emit()
 
 ## Selects `slot`, wrapping around the hotbar, and holds its item if it has one.
 ## Whatever was held goes back into its slot.
@@ -169,7 +235,8 @@ func _hold(item: Equippable) -> void:
 	set_focused_interactable(null)
 	held_item = item
 	item.equip(head)
-	if item.mapping_context:
+	# While a menu is open the context is enabled once the menu closes instead.
+	if item.mapping_context and not _input_blocked:
 		GUIDE.enable_mapping_context(item.mapping_context, false, -1)
 
 ## Empties the hand and disables the item's mapping context. Returns the item.
