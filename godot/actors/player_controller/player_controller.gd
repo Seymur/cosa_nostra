@@ -21,6 +21,9 @@ signal selected_slot_changed(slot: int)
 ## Actions forwarded to the focused interactable when they fire. The interactable
 ## decides what each one does.
 @export var interaction_actions: Array[GUIDEAction];
+## Items stowed in the hotbar at start, filling the item slots in order (slot 0 is
+## the bare hands).
+@export var starting_hotbar_item_paths: Array[NodePath]
 
 @export_group("Mouse")
 @export var horizontal_sensitivity = 0.1
@@ -72,6 +75,18 @@ func _ready() -> void:
 	hotbar_previous_action.just_triggered.connect(select_slot_relative.bind(-1))
 	UIManager.screen_changed.connect(_on_screen_changed)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_stow_starting_items.call_deferred()
+
+# Deferred so the items have finished their own _ready (they set up `body` there).
+func _stow_starting_items() -> void:
+	for i in starting_hotbar_item_paths.size():
+		var slot := BARE_HANDS_SLOT + 1 + i
+		var item := get_node_or_null(starting_hotbar_item_paths[i]) as Equippable
+		if slot >= HOTBAR_SIZE or item == null:
+			continue
+		hotbar[slot] = item
+		item.stow(head)
+	hotbar_changed.emit()
 
 ## Menus must not leak input into the game (scrolling, looking, clicking), so the
 ## gameplay mapping contexts are off while any screen is open.

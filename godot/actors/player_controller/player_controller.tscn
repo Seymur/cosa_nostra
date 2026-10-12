@@ -11,6 +11,7 @@
 [ext_resource type="Resource" path="res://input/default/actions/interact.tres" id="9_interact"]
 [ext_resource type="Resource" path="res://input/default/actions/drop.tres" id="11_drop"]
 [ext_resource type="Resource" path="res://input/items/crowbar/crowbar_primary.tres" id="12_crowbar_primary"]
+[ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="15_pistol_primary"]
 [ext_resource type="Script" uid="uid://cluhc11vixkf1" path="res://addons/guide/guide_action.gd" id="10_action"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_next.tres" id="13_hotbar_next"]
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="14_hotbar_previous"]
@@ -36,7 +37,7 @@ drop_action = ExtResource("11_drop")
 hotbar_next_action = ExtResource("13_hotbar_next")
 hotbar_previous_action = ExtResource("14_hotbar_previous")
 interact_action = ExtResource("9_interact")
-interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact"), ExtResource("12_crowbar_primary")])
+interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact"), ExtResource("12_crowbar_primary"), ExtResource("15_pistol_primary")])
 
 [node name="Head" type="Node3D" parent="." unique_id=1537407369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)

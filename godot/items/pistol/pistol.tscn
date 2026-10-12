@@ -1,0 +1,71 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://items/pistol/pistol.gd" id="1_pistol"]
+[ext_resource type="Resource" path="res://input/items/pistol/pistol.tres" id="2_context"]
+[ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="3_primary"]
+[ext_resource type="Texture2D" path="res://assets/textures/icons/pistol.png" id="4_icon"]
+
+[sub_resource type="StandardMaterial3D" id="Material_body"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+metallic = 0.6
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Material_outline"]
+shading_mode = 0
+cull_mode = 1
+grow = true
+grow_amount = 0.008
+albedo_color = Color(0.8, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_slide"]
+size = Vector3(0.05, 0.06, 0.26)
+
+[sub_resource type="BoxMesh" id="BoxMesh_grip"]
+size = Vector3(0.045, 0.13, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slide"]
+size = Vector3(0.05, 0.06, 0.26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grip"]
+size = Vector3(0.045, 0.13, 0.06)
+
+[node name="Pistol" type="Node3D"]
+script = ExtResource("1_pistol")
+primary_action = ExtResource("3_primary")
+mapping_context = ExtResource("2_context")
+held_position = Vector3(0.25, -0.22, -0.5)
+held_rotation_degrees = Vector3(0, 0, 0)
+display_name = "Pistol"
+icon = ExtResource("4_icon")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="Mesh" type="Node3D" parent="RigidBody3D"]
+
+[node name="Slide" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+mesh = SubResource("BoxMesh_slide")
+surface_material_override/0 = SubResource("Material_body")
+
+[node name="Grip" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, 0.1)
+mesh = SubResource("BoxMesh_grip")
+surface_material_override/0 = SubResource("Material_body")
+
+[node name="Outline" type="Node3D" parent="RigidBody3D/Mesh"]
+visible = false
+
+[node name="Slide" type="MeshInstance3D" parent="RigidBody3D/Mesh/Outline"]
+mesh = SubResource("BoxMesh_slide")
+surface_material_override/0 = SubResource("Material_outline")
+
+[node name="Grip" type="MeshInstance3D" parent="RigidBody3D/Mesh/Outline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, 0.1)
+mesh = SubResource("BoxMesh_grip")
+surface_material_override/0 = SubResource("Material_outline")
+
+[node name="SlideShape" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_slide")
+
+[node name="GripShape" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, 0.1)
+shape = SubResource("BoxShape3D_grip")
