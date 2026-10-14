@@ -1,0 +1,46 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://items/weed/weed.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/textures/icons/dried_weed.png" id="2_icon"]
+
+[sub_resource type="StandardMaterial3D" id="Material_body"]
+albedo_color = Color(0.4, 0.45, 0.2, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="Material_outline"]
+shading_mode = 0
+cull_mode = 1
+grow = true
+grow_amount = 0.008
+albedo_color = Color(0.8, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="Weed" type="Node3D"]
+script = ExtResource("1_script")
+held_position = Vector3(0.25, -0.2, -0.45)
+held_rotation_degrees = Vector3(0, 0, 0)
+display_name = "Weed"
+icon = ExtResource("2_icon")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="Mesh" type="Node3D" parent="RigidBody3D"]
+
+[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Material_body")
+
+[node name="Outline" type="Node3D" parent="RigidBody3D/Mesh"]
+visible = false
+
+[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh/Outline"]
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Material_outline")
+
+[node name="Shape" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_body")
