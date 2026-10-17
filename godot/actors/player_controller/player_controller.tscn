@@ -16,6 +16,8 @@
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="14_hotbar_previous"]
 [ext_resource type="Resource" path="res://input/items/pistol/pistol_primary.tres" id="15_pistol_primary"]
 [ext_resource type="Resource" path="res://input/default/actions/sprint.tres" id="16_sprint"]
+[ext_resource type="Script" path="res://effects/outline/outline_effect.gd" id="17_outline_effect"]
+[ext_resource type="Script" path="res://effects/outline/outline_mask.gd" id="18_outline_mask"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g4v7s"]
 height = 4.0
@@ -24,6 +26,12 @@ radius = 0.1
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 radius = 0.3
 height = 1.8
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_outline"]
+script = ExtResource("17_outline_effect")
+
+[sub_resource type="Compositor" id="Compositor_outline"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_outline")])
 
 [node name="PlayerController" type="CharacterBody3D" unique_id=253727384]
 script = ExtResource("1_jl4op")
@@ -45,6 +53,7 @@ interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=1689887676]
+compositor = SubResource("Compositor_outline")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="Head/Camera" unique_id=840833547]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -54,3 +63,6 @@ target_position = Vector3(0, -2, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1493461509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="OutlineMask" type="SubViewport" parent="." unique_id=1827364501]
+script = ExtResource("18_outline_mask")

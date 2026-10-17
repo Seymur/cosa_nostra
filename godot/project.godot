@@ -55,6 +55,10 @@ inventory={
 
 locale/translations=PackedStringArray("res://localization/translations.en.translation", "res://localization/translations.az.translation", "res://localization/translations.tr.translation", "res://localization/translations.ru.translation", "res://localization/translations.uk.translation", "res://localization/translations.de.translation", "res://localization/translations.fr.translation", "res://localization/translations.es.translation", "res://localization/translations.it.translation", "res://localization/translations.pt_BR.translation", "res://localization/translations.pl.translation", "res://localization/translations.ja.translation", "res://localization/translations.zh_CN.translation", "res://localization/translations.kk.translation")
 
+[layer_names]
+
+3d_render/layer_20="outline"
+
 [physics]
 
 3d/run_on_separate_thread=true

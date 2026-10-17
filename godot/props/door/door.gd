@@ -12,9 +12,6 @@ const HINGE := Vector3(-0.5, 0, 0)
 var is_open := false
 var _tween: Tween
 
-func _ready() -> void:
-	outline_mesh = $Door/Mesh/Outline
-
 func on_action(action: GUIDEAction) -> void:
 	if action == interact_action:
 		toggle()

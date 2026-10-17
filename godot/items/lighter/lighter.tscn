@@ -1,47 +1,32 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dlp4oes17em6p"]
 
-[ext_resource type="Script" path="res://items/lighter/lighter.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/textures/icons/lighter.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://btrg3mqan5fes" path="res://items/lighter/lighter.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bmilqrrse6r05" path="res://assets/textures/icons/lighter.png" id="2_icon"]
+[sub_resource type="BoxMesh" id="BoxMesh_lighter"]
+size = Vector3(0.03, 0.06, 0.012)
 
 [sub_resource type="StandardMaterial3D" id="Material_body"]
 albedo_color = Color(0.75, 0.75, 0.8, 1)
 metallic = 0.8
 roughness = 0.3
 
-[sub_resource type="StandardMaterial3D" id="Material_outline"]
-shading_mode = 0
-cull_mode = 1
-grow = true
-grow_amount = 0.008
-albedo_color = Color(0.8, 1, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lighter"]
-size = Vector3(0.03, 0.06, 0.012)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lighter"]
 size = Vector3(0.03, 0.06, 0.012)
 
-[node name="Lighter" type="Node3D"]
+[node name="Lighter" type="Node3D" unique_id=344857951]
 script = ExtResource("1_script")
 held_position = Vector3(0.25, -0.2, -0.45)
 held_rotation_degrees = Vector3(0, 0, 0)
 display_name = "Lighter"
 icon = ExtResource("2_icon")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=606203530]
 
-[node name="Mesh" type="Node3D" parent="RigidBody3D"]
+[node name="Mesh" type="Node3D" parent="RigidBody3D" unique_id=2037102630]
 
-[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh" unique_id=404614461]
 mesh = SubResource("BoxMesh_lighter")
 surface_material_override/0 = SubResource("Material_body")
 
-[node name="Outline" type="Node3D" parent="RigidBody3D/Mesh"]
-visible = false
-
-[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh/Outline"]
-mesh = SubResource("BoxMesh_lighter")
-surface_material_override/0 = SubResource("Material_outline")
-
-[node name="Shape" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="Shape" type="CollisionShape3D" parent="RigidBody3D" unique_id=289572093]
 shape = SubResource("BoxShape3D_lighter")

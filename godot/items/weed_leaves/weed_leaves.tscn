@@ -1,46 +1,32 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cynmft8i042f7"]
 
-[ext_resource type="Script" path="res://items/weed_leaves/weed_leaves.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/textures/icons/fresh_weed.png" id="2_icon"]
+[ext_resource type="Script" uid="uid://dqpjueh2hcici" path="res://items/weed_leaves/weed_leaves.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://byqbyakxumfab" path="res://assets/textures/icons/fresh_weed.png" id="2_icon"]
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.08, 0.04, 0.08)
 
 [sub_resource type="StandardMaterial3D" id="Material_body"]
 albedo_color = Color(0.2, 0.55, 0.15, 1)
 roughness = 0.8
 
-[sub_resource type="StandardMaterial3D" id="Material_outline"]
-shading_mode = 0
-cull_mode = 1
-grow = true
-grow_amount = 0.008
-albedo_color = Color(0.8, 1, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_body"]
-size = Vector3(0.08, 0.04, 0.08)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_body"]
 size = Vector3(0.08, 0.04, 0.08)
 
-[node name="WeedLeaves" type="Node3D"]
+[node name="WeedLeaves" type="Node3D" unique_id=1934638338]
 script = ExtResource("1_script")
 held_position = Vector3(0.25, -0.2, -0.45)
 held_rotation_degrees = Vector3(0, 0, 0)
 display_name = "Weed Leaves"
 icon = ExtResource("2_icon")
+max_stack = 16
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2007376401]
 
-[node name="Mesh" type="Node3D" parent="RigidBody3D"]
+[node name="Mesh" type="Node3D" parent="RigidBody3D" unique_id=2022978177]
 
-[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh" unique_id=1830077206]
 mesh = SubResource("BoxMesh_body")
 surface_material_override/0 = SubResource("Material_body")
 
-[node name="Outline" type="Node3D" parent="RigidBody3D/Mesh"]
-visible = false
-
-[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh/Outline"]
-mesh = SubResource("BoxMesh_body")
-surface_material_override/0 = SubResource("Material_outline")
-
-[node name="Shape" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="Shape" type="CollisionShape3D" parent="RigidBody3D" unique_id=1073207359]
 shape = SubResource("BoxShape3D_body")
