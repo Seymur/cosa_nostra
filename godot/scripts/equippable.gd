@@ -18,9 +18,30 @@ extends Interactable
 ## Icon shown for this item in the hotbar. The name is shown instead when unset.
 @export var icon: Texture2D
 
+## How many of this item fit in one slot. 1 means the item does not stack. Only
+## stateless items should stack: extras are folded into `stack_count` and respawned
+## from the scene on drop.
+@export var max_stack := 1
+
+## How many items this node stands for in its slot.
+var stack_count := 1
+
 var _saved_layer: int
 var _saved_mask: int
 var _is_carried := false
+
+## True when `other` can be folded into this stack: the same stackable item and
+## room left.
+func can_stack_with(other: Equippable) -> bool:
+	return other != self and max_stack > 1 and stack_count < max_stack 		and scene_file_path != "" and other.scene_file_path == scene_file_path
+
+## Throws one item of the stack into the world, leaving the stack one smaller.
+func drop_one(world: Node, from: Transform3D, impulse: Vector3) -> void:
+	var copy := load(scene_file_path).instantiate() as Equippable
+	world.add_child(copy)
+	copy.global_transform = from
+	copy.body.linear_velocity = impulse
+	stack_count -= 1
 
 ## Takes the item into the holder's hand.
 func equip(holder: Node3D) -> void:

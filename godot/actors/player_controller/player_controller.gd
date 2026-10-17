@@ -121,6 +121,10 @@ func _on_screen_changed(top: Control) -> void:
 ## (when the item allows it), and otherwise reach the item. Without a held item they
 ## go to whatever is focused.
 func _on_interaction_action_triggered(action: GUIDEAction) -> void:
+	# More of the stack in hand can be picked up even while holding it.
+	if held_item and action == interact_action and focused_interactable is Equippable and held_item.can_stack_with(focused_interactable):
+		pick_up(focused_interactable)
+		return
 	if held_item:
 		var target: Interactable = focused_interactable if is_instance_valid(focused_interactable) else null
 		if target and target.on_item_action(held_item, action):
@@ -164,6 +168,19 @@ func move_item(from_container: ItemStore, from_index: int, to_container: ItemSto
 	if from_items[from_index] == null:
 		return
 	var moved := from_items[from_index]
+	var target := to_items[to_index]
+	if target != null and target.can_stack_with(moved):
+		var amount := mini(target.max_stack - target.stack_count, moved.stack_count)
+		target.stack_count += amount
+		moved.stack_count -= amount
+		if moved.stack_count == 0:
+			from_items[from_index] = null
+			# Stows it if it was in the hand, before it goes away.
+			_sync_hand()
+			moved.queue_free()
+		_emit_changed(from_container)
+		_emit_changed(to_container)
+		return
 	from_items[from_index] = to_items[to_index]
 	to_items[to_index] = moved
 	_sync_hand()
@@ -191,6 +208,8 @@ func _sync_hand() -> void:
 ## becomes selected) and holds it. When the hotbar is full it is stowed in the
 ## inventory instead, and does nothing when that is full too.
 func pick_up(item: Equippable) -> void:
+	if _merge_into_stack(item):
+		return
 	if held_item:
 		return
 	var slot := selected_slot
@@ -205,6 +224,27 @@ func pick_up(item: Equippable) -> void:
 		selected_slot_changed.emit(slot)
 	_hold(hotbar[slot])
 	hotbar_changed.emit()
+
+## Folds a picked-up `item` into a stack of the same kind that has room. Returns
+## whether it did; the item node is then freed.
+func _merge_into_stack(item: Equippable) -> bool:
+	for container in [ItemStore.HOTBAR, ItemStore.INVENTORY]:
+		var items := _items_of(container)
+		for i in items.size():
+			if is_fixed_slot(container, i) or items[i] == null or not items[i].can_stack_with(item):
+				continue
+			items[i].stack_count += 1
+			set_focused_interactable(null)
+			item.queue_free()
+			_emit_changed(container)
+			return true
+	return false
+
+func _emit_changed(container: ItemStore) -> void:
+	if container == ItemStore.HOTBAR:
+		hotbar_changed.emit()
+	else:
+		inventory_changed.emit()
 
 func _stow_in_inventory(item: Equippable) -> void:
 	var slot := _find_free_inventory_slot()
@@ -256,6 +296,10 @@ func _release_hand() -> Equippable:
 func unequip() -> void:
 	if not held_item:
 		return
+	if held_item.stack_count > 1:
+		held_item.drop_one(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
+		hotbar_changed.emit()
+		return
 	var item := _release_hand()
 	hotbar[selected_slot] = null
 	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
@@ -305,12 +349,13 @@ func set_focused_interactable(interactable: Interactable) -> void:
 	if is_instance_valid(focused_interactable):
 		focused_interactable.hide_outline()
 	focused_interactable = interactable
-	if focused_interactable and _can_show_outline():
+	if focused_interactable and _can_show_outline(focused_interactable):
 		focused_interactable.show_outline()
 
-# An item whose click never interacts shouldn't make interactables look clickable.
-func _can_show_outline() -> bool:
-	return held_item == null or held_item.allows_interact_fallthrough
+# An item whose click never interacts shouldn't make interactables look clickable,
+# except more of the stack in hand, which can still be picked up.
+func _can_show_outline(interactable: Interactable) -> bool:
+	return held_item == null or held_item.allows_interact_fallthrough or (interactable is Equippable and held_item.can_stack_with(interactable))
 
 ## Crouching is hold-to-crouch. Standing back up is blocked while something is
 ## directly overhead.

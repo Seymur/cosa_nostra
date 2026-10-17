@@ -34,7 +34,7 @@ func _refresh() -> void:
 		if i == _player.BARE_HANDS_SLOT:
 			_slots[i].show_content(bare_hands_icon, "Hands")
 		elif item:
-			_slots[i].show_content(item.icon, item.display_name)
+			_slots[i].show_content(item.icon, item.display_name, item.stack_count)
 		else:
 			_slots[i].show_content(null, "")
 		_slots[i].set_selected(i == _player.selected_slot)

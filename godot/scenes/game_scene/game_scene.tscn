@@ -12,12 +12,13 @@
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
 [ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
-[ext_resource type="PackedScene" path="res://items/pistol/pistol.tscn" id="15_pistol"]
-[ext_resource type="PackedScene" path="res://items/cigarettes/cigarettes.tscn" id="16_cigarettes"]
-[ext_resource type="PackedScene" path="res://items/lighter/lighter.tscn" id="17_lighter"]
-[ext_resource type="PackedScene" path="res://items/weed_leaves/weed_leaves.tscn" id="18_weed_leaves"]
-[ext_resource type="PackedScene" path="res://items/weed/weed.tscn" id="19_weed"]
-[ext_resource type="PackedScene" path="res://items/weed_package/weed_package.tscn" id="20_weed_package"]
+[ext_resource type="PackedScene" uid="uid://bgdyw0i5fi18k" path="res://items/pistol/pistol.tscn" id="15_pistol"]
+[ext_resource type="PackedScene" uid="uid://eft0f8225n1y" path="res://items/cigarettes/cigarettes.tscn" id="16_cigarettes"]
+[ext_resource type="PackedScene" uid="uid://dlp4oes17em6p" path="res://items/lighter/lighter.tscn" id="17_lighter"]
+[ext_resource type="PackedScene" uid="uid://cynmft8i042f7" path="res://items/weed_leaves/weed_leaves.tscn" id="18_weed_leaves"]
+[ext_resource type="PackedScene" uid="uid://dhv0fm7pusuq8" path="res://props/planter/planter.tscn" id="19_hn7ev"]
+[ext_resource type="PackedScene" uid="uid://cc4dfj6147ykc" path="res://items/weed/weed.tscn" id="19_weed"]
+[ext_resource type="PackedScene" uid="uid://co8frisfvws2m" path="res://items/weed_package/weed_package.tscn" id="20_weed_package"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -66,14 +67,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3)
 [node name="Lighter" parent="." unique_id=839984162 instance=ExtResource("17_lighter")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -3)
 
-[node name="WeedLeaves" parent="." instance=ExtResource("18_weed_leaves")]
+[node name="WeedLeaves" parent="." unique_id=1972912083 instance=ExtResource("18_weed_leaves")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -3)
 
-[node name="Weed" parent="." instance=ExtResource("19_weed")]
+[node name="Weed" parent="." unique_id=1821453741 instance=ExtResource("19_weed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -3)
 
-[node name="WeedPackage" parent="." instance=ExtResource("20_weed_package")]
+[node name="WeedPackage" parent="." unique_id=1132468808 instance=ExtResource("20_weed_package")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -3)
+
+[node name="WeedLeaves2" parent="." unique_id=438689100 instance=ExtResource("18_weed_leaves")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1, -4.5)
+
+[node name="WeedLeaves3" parent="." unique_id=100494457 instance=ExtResource("18_weed_leaves")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1, -4.5)
+
+[node name="WeedLeaves4" parent="." unique_id=1800018571 instance=ExtResource("18_weed_leaves")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, -4.5)
+
+[node name="WeedLeaves5" parent="." unique_id=2074042250 instance=ExtResource("18_weed_leaves")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -4.5)
+
+[node name="Weed2" parent="." unique_id=206232696 instance=ExtResource("19_weed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 1, -6)
+
+[node name="Weed3" parent="." unique_id=829282269 instance=ExtResource("19_weed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1, -6)
+
+[node name="Weed4" parent="." unique_id=1942323337 instance=ExtResource("19_weed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, -6)
+
+[node name="Weed5" parent="." unique_id=60355445 instance=ExtResource("19_weed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -6)
 
 [node name="PlayerController" parent="." unique_id=253727384 instance=ExtResource("1_pwder")]
 starting_hotbar_item_paths = Array[NodePath]([NodePath("../Pistol")])
@@ -192,3 +217,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -6)
 
 [node name="Door3" parent="." unique_id=1612112443 instance=ExtResource("10_dgii4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3999996, 0, -6)
+
+[node name="Planter" parent="." unique_id=610616381 instance=ExtResource("19_hn7ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="Planter2" parent="." unique_id=352507807 instance=ExtResource("19_hn7ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+
+[node name="Planter3" parent="." unique_id=19547062 instance=ExtResource("19_hn7ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
+
+[node name="Planter4" parent="." unique_id=1947088550 instance=ExtResource("19_hn7ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+
+[node name="Planter5" parent="." unique_id=1867855794 instance=ExtResource("19_hn7ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)

@@ -21,6 +21,7 @@ var _slot_size := SLOT_SIZE
 var _drag_preview: CanvasLayer
 var _icon: TextureRect
 var _name_label: Label
+var _count_label: Label
 
 ## Sets the slot up and builds its visuals. `fixed` marks the slot that never holds
 ## an item with diagonal stripes.
@@ -54,10 +55,20 @@ func setup(p_player: Node, p_container: int, p_index: int, fixed := false, slot_
 	_name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_name_label)
 
-## Shows `icon`, or `label` as text when there is no icon.
-func show_content(icon: Texture2D, label: String) -> void:
+	_count_label = Label.new()
+	_count_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	_count_label.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	_count_label.add_theme_font_size_override("font_size", 14)
+	_count_label.add_theme_color_override("font_outline_color", Color.BLACK)
+	_count_label.add_theme_constant_override("outline_size", 4)
+	_count_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_count_label)
+
+## Shows `icon`, or `label` as text when there is no icon, and `count` when above 1.
+func show_content(icon: Texture2D, label: String, count := 1) -> void:
 	_icon.texture = icon
 	_name_label.text = "" if icon else label
+	_count_label.text = "x%d" % count if count > 1 else ""
 
 func set_selected(selected: bool) -> void:
 	add_theme_stylebox_override("panel", _selected_style if selected else _normal_style)
