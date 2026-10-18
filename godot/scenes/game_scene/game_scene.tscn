@@ -12,6 +12,7 @@
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
 [ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
+[ext_resource type="PackedScene" path="res://ui/snap_indicator/snap_indicator.tscn" id="99_snap"]
 [ext_resource type="PackedScene" uid="uid://bgdyw0i5fi18k" path="res://items/pistol/pistol.tscn" id="15_pistol"]
 [ext_resource type="PackedScene" uid="uid://eft0f8225n1y" path="res://items/cigarettes/cigarettes.tscn" id="16_cigarettes"]
 [ext_resource type="PackedScene" uid="uid://dlp4oes17em6p" path="res://items/lighter/lighter.tscn" id="17_lighter"]
@@ -156,6 +157,9 @@ mouse_filter = 1
 script = ExtResource("2_72663")
 
 [node name="Crosshair" parent="GameSceneUI" unique_id=1554955450 instance=ExtResource("13_xhair")]
+layout_mode = 1
+
+[node name="SnapIndicator" parent="GameSceneUI" instance=ExtResource("99_snap")]
 layout_mode = 1
 
 [node name="HotbarLayer" type="CanvasLayer" parent="GameSceneUI" unique_id=781906409]

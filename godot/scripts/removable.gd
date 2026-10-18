@@ -7,6 +7,9 @@ extends Interactable
 ## usually instances this prop as its visual, which would be a cyclic reference.
 @export_file("*.tscn") var item_scene_path := ""
 
+func _ready() -> void:
+	add_to_group(&"snappable")
+
 func on_action(action: GUIDEAction) -> void:
 	if action == remove_action:
 		_remove()
