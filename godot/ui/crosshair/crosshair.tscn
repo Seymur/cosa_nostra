@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://ui/crosshair/crosshair.gd" id="2_script"]
+[ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="3_remove"]
 [ext_resource type="Shader" path="res://ui/crosshair/crosshair.gdshader" id="1_shader"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dot"]
@@ -8,6 +10,7 @@ shader_parameter/color = Color(1, 1, 1, 0.9)
 shader_parameter/outline_color = Color(0, 0, 0, 0.6)
 shader_parameter/radius = 1.5
 shader_parameter/outline_width = 1.0
+shader_parameter/progress = 0.0
 
 [node name="Crosshair" type="ColorRect"]
 material = SubResource("ShaderMaterial_dot")
@@ -23,3 +26,5 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("2_script")
+remove_action = ExtResource("3_remove")

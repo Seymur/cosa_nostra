@@ -468,6 +468,11 @@ func _update_caches() -> void:
 				if _is_same_action_mapping(existing_mapping, action_mapping):
 					# we found an existing mapping, so we can just use it
 					# and we can skip the rest of the processing for this mapping.
+					# The threshold was reset above, so restore it from the reused mapping,
+					# otherwise the action's elapsed_ratio would stay 0.
+					for reused_input in existing_mapping.input_mappings:
+						if reused_input._trigger_hold_threshold >= 0 and (action._trigger_hold_threshold < 0 or reused_input._trigger_hold_threshold < action._trigger_hold_threshold):
+							action._trigger_hold_threshold = reused_input._trigger_hold_threshold
 					new_action_mappings.append(existing_mapping)
 					found_existing = true
 					break
