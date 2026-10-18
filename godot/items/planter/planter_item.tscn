@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/placeable_item.gd" id="1_item"]
+[ext_resource type="Resource" path="res://input/items/planter/planter.tres" id="2_context"]
+[ext_resource type="Resource" path="res://input/items/planter/planter_primary.tres" id="3_primary"]
+[ext_resource type="PackedScene" uid="uid://dhv0fm7pusuq8" path="res://props/planter/planter.tscn" id="4_planter"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_planter"]
+size = Vector3(1, 0.5, 0.6)
+
+[node name="PlanterItem" type="Node3D"]
+script = ExtResource("1_item")
+primary_action = ExtResource("3_primary")
+placed_scene_path = "res://props/planter/planter.tscn"
+mapping_context = ExtResource("2_context")
+held_position = Vector3(0.4, -0.55, -0.9)
+held_rotation_degrees = Vector3(0, 0, 0)
+display_name = "Planter"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="Visual" parent="RigidBody3D" instance=ExtResource("4_planter")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_planter")

@@ -305,6 +305,19 @@ func unequip() -> void:
 	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
 	hotbar_changed.emit()
 
+## Removes the held item from the game, e.g. once it was used up by being placed.
+func consume_held() -> void:
+	if not held_item:
+		return
+	if held_item.stack_count > 1:
+		held_item.stack_count -= 1
+		hotbar_changed.emit()
+		return
+	var item := _release_hand()
+	hotbar[selected_slot] = null
+	item.queue_free()
+	hotbar_changed.emit()
+
 func _on_speed_up_triggered():
 	GameControl.request_speed(GameClock.speed_multiplier * 2.0)
 

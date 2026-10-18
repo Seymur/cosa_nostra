@@ -1,1 +1,1 @@
-extends Interactable
+extends Removable

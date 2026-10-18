@@ -60,6 +60,7 @@ base_font = ExtResource("4_ducuf")
 [node name="GameScene" type="Node3D" unique_id=1768353959]
 
 [node name="Pistol" parent="." unique_id=35155755 instance=ExtResource("15_pistol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.571661, -2.049833)
 
 [node name="Cigarettes" parent="." unique_id=549357998 instance=ExtResource("16_cigarettes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -3)
@@ -101,7 +102,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, -6)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -6)
 
 [node name="PlayerController" parent="." unique_id=253727384 instance=ExtResource("1_pwder")]
-starting_hotbar_item_paths = Array[NodePath]([NodePath("../Pistol")])
 
 [node name="Greyboxing" type="Node3D" parent="." unique_id=286349983]
 
@@ -118,13 +118,14 @@ light_energy = 16.0
 shadow_enabled = true
 omni_attenuation = 0.0
 
-[node name="Ground" type="StaticBody3D" parent="Greyboxing" unique_id=934140722]
+[node name="Ground" type="StaticBody3D" parent="Greyboxing" unique_id=934140722 groups=["ground"]]
 
 [node name="Ground" type="CSGBox3D" parent="Greyboxing/Ground" unique_id=1090066014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 3
 size = Vector3(2000, 2, 2000)
 material = SubResource("ShaderMaterial_grid")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Greyboxing/Ground" unique_id=1566917769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
