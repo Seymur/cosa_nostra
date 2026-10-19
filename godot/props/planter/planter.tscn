@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://mri2fubgu3u0" path="res://props/planter/planter.gd" id="1_ov38j"]
 [ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="2_remove"]
+[ext_resource type="PackedScene" uid="uid://cc4dfj6147ykc" path="res://items/weed/weed.tscn" id="weed"]
+[ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S1_Seedling.glb" id="s1"]
+[ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S2_Young.glb" id="s2"]
+[ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S3_Flowering.glb" id="s3"]
+[ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S4_Harvest.glb" id="s4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8216k"]
 resource_name = "Planter"
@@ -77,6 +82,8 @@ size = Vector3(1, 0.5, 0.6)
 script = ExtResource("1_ov38j")
 remove_action = ExtResource("2_remove")
 item_scene_path = "res://items/planter/planter_item.tscn"
+harvest_scene = ExtResource("weed")
+stage_scenes = Array[PackedScene]([ExtResource("s1"), ExtResource("s2"), ExtResource("s3"), ExtResource("s4")])
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=689636900]
 
@@ -86,3 +93,6 @@ mesh = SubResource("ArrayMesh_cfpm7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=367664678]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_g4v7s")
+
+[node name="PlantAnchor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)

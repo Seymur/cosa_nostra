@@ -12,7 +12,6 @@
 [ext_resource type="Shader" uid="uid://y8lu45e177iu" path="res://scenes/game_scene/grid_ground.gdshader" id="12_grid"]
 [ext_resource type="PackedScene" path="res://ui/crosshair/crosshair.tscn" id="13_xhair"]
 [ext_resource type="PackedScene" path="res://ui/hotbar/hotbar.tscn" id="14_hotbar"]
-[ext_resource type="PackedScene" path="res://ui/snap_indicator/snap_indicator.tscn" id="99_snap"]
 [ext_resource type="PackedScene" uid="uid://bgdyw0i5fi18k" path="res://items/pistol/pistol.tscn" id="15_pistol"]
 [ext_resource type="PackedScene" uid="uid://eft0f8225n1y" path="res://items/cigarettes/cigarettes.tscn" id="16_cigarettes"]
 [ext_resource type="PackedScene" uid="uid://dlp4oes17em6p" path="res://items/lighter/lighter.tscn" id="17_lighter"]
@@ -20,6 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://dhv0fm7pusuq8" path="res://props/planter/planter.tscn" id="19_hn7ev"]
 [ext_resource type="PackedScene" uid="uid://cc4dfj6147ykc" path="res://items/weed/weed.tscn" id="19_weed"]
 [ext_resource type="PackedScene" uid="uid://co8frisfvws2m" path="res://items/weed_package/weed_package.tscn" id="20_weed_package"]
+[ext_resource type="PackedScene" path="res://items/weed_seed/weed_seed.tscn" id="90_seed"]
+[ext_resource type="PackedScene" path="res://items/watering_can/watering_can.tscn" id="91_can"]
+[ext_resource type="PackedScene" path="res://items/garden_shears/garden_shears.tscn" id="92_shears"]
+[ext_resource type="PackedScene" path="res://ui/snap_indicator/snap_indicator.tscn" id="99_snap"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o81xq"]
 albedo_color = Color(0, 1, 0, 1)
@@ -74,6 +77,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -3)
 
 [node name="Weed" parent="." unique_id=1821453741 instance=ExtResource("19_weed")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -3)
+
+[node name="WeedSeed" parent="." unique_id=66891887 instance=ExtResource("90_seed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1, -3)
+
+[node name="WateringCan" parent="." unique_id=1975686179 instance=ExtResource("91_can")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -3)
+
+[node name="GardenShears" parent="." unique_id=1866848278 instance=ExtResource("92_shears")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -3)
 
 [node name="WeedPackage" parent="." unique_id=1132468808 instance=ExtResource("20_weed_package")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -3)
@@ -159,7 +171,7 @@ script = ExtResource("2_72663")
 [node name="Crosshair" parent="GameSceneUI" unique_id=1554955450 instance=ExtResource("13_xhair")]
 layout_mode = 1
 
-[node name="SnapIndicator" parent="GameSceneUI" instance=ExtResource("99_snap")]
+[node name="SnapIndicator" parent="GameSceneUI" unique_id=1434683274 instance=ExtResource("99_snap")]
 layout_mode = 1
 
 [node name="HotbarLayer" type="CanvasLayer" parent="GameSceneUI" unique_id=781906409]

@@ -29,6 +29,11 @@ func hide_outline():
 func on_action(action: GUIDEAction) -> void:
 	pass
 
+## Whether `item` can currently be used on this interactable through
+## `on_item_action`. Controls whether it is highlighted while that item is held.
+func accepts_item(item: Interactable) -> bool:
+	return false
+
 ## Called when a held item's action fires while this interactable is focused.
 ## Return true to handle it with an item-specific interaction; when false the
 ## player falls back to the plain interact action, as if nothing were held.

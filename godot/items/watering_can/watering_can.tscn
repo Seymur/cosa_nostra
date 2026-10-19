@@ -1,0 +1,38 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://items/watering_can/watering_can.gd" id="1_script"]
+[ext_resource type="Resource" path="res://input/items/watering_can/watering_can.tres" id="2_context"]
+[ext_resource type="Resource" path="res://input/items/watering_can/watering_can_primary.tres" id="3_primary"]
+[ext_resource type="Texture2D" path="res://assets/textures/icons/watering_can_pour.png" id="4_icon"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_body"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="Material_body"]
+albedo_color = Color(0.2, 0.45, 0.7, 1)
+roughness = 0.6
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_body"]
+height = 0.2
+radius = 0.08
+
+[node name="WateringCan" type="Node3D"]
+script = ExtResource("1_script")
+primary_action = ExtResource("3_primary")
+mapping_context = ExtResource("2_context")
+held_position = Vector3(0.3, -0.25, -0.5)
+display_name = "Watering Can"
+icon = ExtResource("4_icon")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="Mesh" type="Node3D" parent="RigidBody3D"]
+
+[node name="Body" type="MeshInstance3D" parent="RigidBody3D/Mesh"]
+mesh = SubResource("CylinderMesh_body")
+surface_material_override/0 = SubResource("Material_body")
+
+[node name="Shape" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("CylinderShape3D_body")

@@ -18,6 +18,9 @@
 [ext_resource type="Resource" path="res://input/default/actions/sprint.tres" id="16_sprint"]
 [ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="19_remove"]
 [ext_resource type="Resource" path="res://input/items/planter/planter_primary.tres" id="20_planter_primary"]
+[ext_resource type="Resource" path="res://input/items/weed_seed/weed_seed_primary.tres" id="21_seed_primary"]
+[ext_resource type="Resource" path="res://input/items/watering_can/watering_can_primary.tres" id="22_can_primary"]
+[ext_resource type="Resource" path="res://input/items/garden_shears/garden_shears_primary.tres" id="23_shears_primary"]
 [ext_resource type="Script" path="res://effects/outline/outline_effect.gd" id="17_outline_effect"]
 [ext_resource type="Script" path="res://effects/outline/outline_mask.gd" id="18_outline_mask"]
 
@@ -49,7 +52,7 @@ drop_action = ExtResource("11_drop")
 hotbar_next_action = ExtResource("13_hotbar_next")
 hotbar_previous_action = ExtResource("14_hotbar_previous")
 interact_action = ExtResource("9_interact")
-interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact"), ExtResource("12_crowbar_primary"), ExtResource("15_pistol_primary"), ExtResource("19_remove"), ExtResource("20_planter_primary")])
+interaction_actions = Array[ExtResource("10_action")]([ExtResource("9_interact"), ExtResource("12_crowbar_primary"), ExtResource("15_pistol_primary"), ExtResource("19_remove"), ExtResource("20_planter_primary"), ExtResource("21_seed_primary"), ExtResource("22_can_primary"), ExtResource("23_shears_primary")])
 
 [node name="Head" type="Node3D" parent="." unique_id=1537407369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)

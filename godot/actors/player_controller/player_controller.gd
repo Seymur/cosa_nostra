@@ -39,6 +39,7 @@ signal selected_slot_changed(slot: int)
 @onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
 
 var focused_interactable: Interactable
+var _outline_shown := false
 ## The item in the hand, which is always the one in the selected hotbar slot.
 var held_item: Equippable
 ## Quick-slot contents, null for an empty slot.
@@ -364,13 +365,28 @@ func set_focused_interactable(interactable: Interactable) -> void:
 	if is_instance_valid(focused_interactable):
 		focused_interactable.hide_outline()
 	focused_interactable = interactable
-	if focused_interactable and _can_show_outline(focused_interactable):
+	_outline_shown = false
+	_refresh_outline()
+
+# Re-checked every physics frame, since the held item or the target's state can change
+# without the focus moving.
+func _refresh_outline() -> void:
+	if not is_instance_valid(focused_interactable):
+		_outline_shown = false
+		return
+	var should_show := _can_show_outline(focused_interactable)
+	if should_show == _outline_shown:
+		return
+	_outline_shown = should_show
+	if should_show:
 		focused_interactable.show_outline()
+	else:
+		focused_interactable.hide_outline()
 
 # An item whose click never interacts shouldn't make interactables look clickable,
 # except more of the stack in hand, which can still be picked up.
 func _can_show_outline(interactable: Interactable) -> bool:
-	return held_item == null or held_item.allows_interact_fallthrough or (interactable is Equippable and held_item.can_stack_with(interactable))
+	return held_item == null or held_item.allows_interact_fallthrough or interactable.accepts_item(held_item) or (interactable is Equippable and held_item.can_stack_with(interactable))
 
 ## Crouching is hold-to-crouch. Standing back up is blocked while something is
 ## directly overhead.
@@ -395,6 +411,7 @@ func _can_stand_up() -> bool:
 
 func _physics_process(delta: float) -> void:
 	set_focused_interactable(find_closest_interactable())
+	_refresh_outline()
 	_update_crouch(delta)
 
 	# Add the gravity.
