@@ -21,9 +21,8 @@ script = ExtResource("1_script")
 primary_action = ExtResource("3_primary")
 mapping_context = ExtResource("2_context")
 held_position = Vector3(0.25, -0.2, -0.45)
-display_name = "Weed Seed"
+display_name = "Weed Seed Pouch"
 icon = ExtResource("4_icon")
-max_stack = 16
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 

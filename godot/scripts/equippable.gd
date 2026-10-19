@@ -30,6 +30,10 @@ var _saved_layer: int
 var _saved_mask: int
 var _is_carried := false
 
+## The number shown on the item's slot. Items that keep their own count override this.
+func get_display_count() -> int:
+	return stack_count
+
 ## True when `other` can be folded into this stack: the same stackable item and
 ## room left.
 func can_stack_with(other: Equippable) -> bool:

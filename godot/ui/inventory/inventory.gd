@@ -46,6 +46,6 @@ func _refresh() -> void:
 	for i in _slots.size():
 		var item: Equippable = _player.inventory[i]
 		if item:
-			_slots[i].show_content(item.icon, item.display_name, item.stack_count)
+			_slots[i].show_content(item.icon, item.display_name, item.get_display_count())
 		else:
 			_slots[i].show_content(null, "")

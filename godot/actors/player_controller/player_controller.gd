@@ -227,6 +227,47 @@ func pick_up(item: Equippable) -> void:
 		set_focused_interactable(null)
 	hotbar_changed.emit()
 
+## How many of the item in `scene` fit into the hotbar and inventory, counting room
+## left in stacks of it and empty slots.
+func free_room_for(scene: PackedScene) -> int:
+	var sample := scene.instantiate() as Equippable
+	var per_slot := sample.max_stack
+	var path := sample.scene_file_path
+	sample.free()
+	var room := 0
+	for container in [ItemStore.HOTBAR, ItemStore.INVENTORY]:
+		var items := _items_of(container)
+		for i in items.size():
+			if is_fixed_slot(container, i):
+				continue
+			if items[i] == null:
+				room += per_slot
+			elif per_slot > 1 and items[i].scene_file_path == path:
+				room += items[i].max_stack - items[i].stack_count
+	return room
+
+## Adds `amount` of the item in `scene` to existing stacks, then the first free hotbar
+## slot, then the inventory, even while something else is held. Returns false, adding nothing, when it won't fit.
+func give_items(scene: PackedScene, amount: int) -> bool:
+	if free_room_for(scene) < amount:
+		return false
+	for n in amount:
+		var item := scene.instantiate() as Equippable
+		if _merge_into_stack(item):
+			continue
+		get_parent().add_child(item)
+		var slot := _find_free_slot()
+		if slot != -1:
+			hotbar[slot] = item
+			item.stow(head)
+			hotbar_changed.emit()
+			continue
+		slot = _find_free_inventory_slot()
+		inventory[slot] = item
+		item.stow(head)
+		inventory_changed.emit()
+	return true
+
 ## Folds a picked-up `item` into a stack of the same kind that has room. Returns
 ## whether it did; the item node is then freed.
 func _merge_into_stack(item: Equippable) -> bool:

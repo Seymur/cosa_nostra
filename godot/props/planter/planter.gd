@@ -65,7 +65,7 @@ func accepts_item(item: Interactable) -> bool:
 
 func on_item_action(item: Interactable, action: GUIDEAction) -> bool:
 	if item is WeedSeed and action == item.primary_action:
-		_plant_seed()
+		_plant_seed(item)
 		return true
 	if item is WateringCan and action == item.primary_action:
 		_water()
@@ -75,13 +75,17 @@ func on_item_action(item: Interactable, action: GUIDEAction) -> bool:
 		return true
 	return super(item, action)
 
-func _plant_seed() -> void:
+func _plant_seed(pouch: WeedSeed) -> void:
 	if state != State.EMPTY or stage_scenes.is_empty():
 		return
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
-	player.consume_held()
+	pouch.seed_count -= 1
+	if pouch.seed_count <= 0:
+		player.consume_held()
+	else:
+		player.hotbar_changed.emit()
 	state = State.PLANTED
 	_show_stage(0)
 
