@@ -18,38 +18,23 @@ var _plant: Node3D
 
 @onready var _plant_anchor: Node3D = $PlantAnchor
 
-const STAGE_NAMES: Array[String] = ["Seedling", "Young", "Flowering", "Harvest"]
-
 func get_hud_text(held: Equippable) -> String:
 	var text := ""
 	match state:
 		State.EMPTY:
-			text = "Planter
-Empty"
+			text = "Empty"
 		State.PLANTED:
-			text = "Weed plant
-%s (1/%d)
-Needs watering" % [STAGE_NAMES[0], stage_scenes.size()]
+			text = "Needs watering"
 		State.GROWING:
 			var elapsed: int = GameClock.get_total_minutes() - _watered_at
 			var total := stage_duration_minutes * (stage_scenes.size() - 1)
-			text = "Weed plant
-%s (%d/%d)
-Growth: %d%%
-Next stage: %s
-Ready in: %s" % [
-				STAGE_NAMES[stage], stage + 1, stage_scenes.size(),
+			text = "Growth: %d%%\nReady in: %s" % [
 				clampi(elapsed * 100 / maxi(total, 1), 0, 100),
-				_format_minutes(stage_duration_minutes * (stage + 1) - elapsed),
 				_format_minutes(total - elapsed)]
 		_:
-			text = "Weed plant
-%s (%d/%d)
-Ready to harvest" % [STAGE_NAMES[stage], stage + 1, stage_scenes.size()]
+			text = "Ready to harvest"
 	var actions := _action_hints(held)
-	return text if actions.is_empty() else text + "
-
-" + actions
+	return text if actions.is_empty() else text + "\n" + actions
 
 func _action_hints(held: Equippable) -> String:
 	var hints: Array[String] = []
@@ -62,8 +47,7 @@ func _action_hints(held: Equippable) -> String:
 			hints.append("Hold [LMB] Harvest" if held is GardenShears else "Needs Garden Shears")
 	if state == State.EMPTY and held == null:
 		hints.append("Hold [X] Pick up")
-	return "
-".join(hints)
+	return "\n".join(hints)
 
 func _format_minutes(minutes: int) -> String:
 	minutes = maxi(minutes, 0)
@@ -72,6 +56,9 @@ func _format_minutes(minutes: int) -> String:
 	if days > 0:
 		return "%dd %dh" % [days, hours]
 	return "%dh %dm" % [hours, minutes % 60]
+
+func can_interact(held: Equippable) -> bool:
+	return held == null or accepts_item(held)
 
 func accepts_item(item: Interactable) -> bool:
 	return (item is WeedSeed and state == State.EMPTY) or (item is WateringCan and state == State.PLANTED) or (item is GardenShears and state == State.HARVESTABLE)

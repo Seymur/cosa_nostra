@@ -34,6 +34,11 @@ func on_action(action: GUIDEAction) -> void:
 func accepts_item(item: Interactable) -> bool:
 	return false
 
+## Whether anything can be done to this interactable with `held` (or empty hands)
+## right now. The HUD text is only shown while it can.
+func can_interact(held: Equippable) -> bool:
+	return accepts_item(held) if held else false
+
 ## Text shown in the HUD while this interactable is focused, given the item in hand
 ## (or null). Empty shows nothing.
 func get_hud_text(held: Equippable) -> String:
