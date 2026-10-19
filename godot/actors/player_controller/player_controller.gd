@@ -51,7 +51,7 @@ var inventory: Array[Equippable] = []
 var selected_slot := 0
 
 ## The two places an item can be kept. The hotbar counts as extra inventory.
-enum ItemStore { HOTBAR, INVENTORY }
+enum ItemStore {HOTBAR, INVENTORY}
 
 const HOTBAR_SIZE = 8
 ## Slot 0 never holds an item; selecting it leaves the hands empty.
@@ -64,7 +64,7 @@ const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
 const AIR_SPEED = 2.5
 const AIR_ACCEL = 20.0
-const DROP_SPEED = 2.0
+const DROP_SPEED = 6.5
 
 const STAND_HEIGHT = 1.8
 const CROUCH_HEIGHT = 1.0
@@ -343,13 +343,15 @@ func _release_hand() -> Equippable:
 func unequip() -> void:
 	if not held_item:
 		return
+	# Thrown forward from where the item is held, not from the eyes.
+	var from := held_item.global_transform
 	if held_item.stack_count > 1:
-		held_item.drop_one(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
+		held_item.drop_one(get_parent(), from, -camera.global_basis.z * DROP_SPEED + velocity)
 		hotbar_changed.emit()
 		return
 	var item := _release_hand()
 	hotbar[selected_slot] = null
-	item.drop(get_parent(), camera.global_transform, -camera.global_basis.z * DROP_SPEED + velocity)
+	item.drop(get_parent(), from, -camera.global_basis.z * DROP_SPEED + velocity)
 	hotbar_changed.emit()
 
 ## Removes the held item from the game, e.g. once it was used up by being placed.
