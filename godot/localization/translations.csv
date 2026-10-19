@@ -1,59 +1,59 @@
-keys,en,az,tr,ru,uk,de,fr,es,it,pt_BR,pl,ja,zh_CN,kk
-MENU_RESUME,Resume,Davam et,Devam Et,Продолжить,Продовжити,Fortsetzen,Reprendre,Reanudar,Riprendi,Continuar,Wznów,再開,继续,Жалғастыру
-MENU_SAVE_GAME,Save Game,Oyunu yadda saxla,Oyunu Kaydet,Сохранить игру,Зберегти гру,Spiel speichern,Sauvegarder la partie,Guardar partida,Salva partita,Salvar jogo,Zapisz grę,ゲームを保存,保存游戏,Ойынды сақтау
-MENU_LOAD_GAME,Load Game,Oyunu yüklə,Oyunu Yükle,Загрузить игру,Завантажити гру,Spiel laden,Charger la partie,Cargar partida,Carica partita,Carregar jogo,Wczytaj grę,ゲームを読み込む,读取游戏,Ойынды жүктеу
-MENU_SETTINGS,Settings,Parametrlər,Ayarlar,Настройки,Налаштування,Einstellungen,Paramètres,Ajustes,Impostazioni,Configurações,Ustawienia,設定,设置,Параметрлер
-MENU_CREDITS,Credits,Yaradıcılar,Emeği Geçenler,Авторы,Автори,Mitwirkende,Crédits,Créditos,Crediti,Créditos,Twórcy,クレジット,制作人员,Авторлар
-MENU_EXIT_TO_MENU,Exit To Menu,Menyuya çıx,Menüye Çık,Выйти в меню,Вийти в меню,Zurück zum Menü,Retour au menu,Salir al menú,Esci al menu,Sair para o menu,Wyjdź do menu,メニューに戻る,返回主菜单,Мәзірге шығу
-MENU_EXIT_TO_DESKTOP,Exit To Desktop,İş masasına çıx,Masaüstüne Çık,Выйти на рабочий стол,Вийти на робочий стіл,Zum Desktop beenden,Quitter vers le bureau,Salir al escritorio,Esci sul desktop,Sair para a área de trabalho,Wyjdź na pulpit,デスクトップに戻る,退出到桌面,Жұмыс үстеліне шығу
-SETTINGS_TAB_GENERAL,General,Ümumi,Genel,Общие,Загальні,Allgemein,Général,General,Generali,Geral,Ogólne,一般,常规,Жалпы
-SETTINGS_TAB_GRAPHICS,Graphics,Qrafika,Grafik,Графика,Графіка,Grafik,Graphismes,Gráficos,Grafica,Gráficos,Grafika,グラフィック,图形,Графика
-SETTINGS_TAB_AUDIO,Audio,Səs,Ses,Звук,Звук,Audio,Audio,Audio,Audio,Áudio,Dźwięk,オーディオ,音频,Дыбыс
-SETTINGS_TAB_CONTROLS,Controls,İdarəetmə,Kontroller,Управление,Керування,Steuerung,Commandes,Controles,Controlli,Controles,Sterowanie,コントロール,控制,Басқару
-SETTINGS_LANGUAGE,Language,Dil,Dil,Язык,Мова,Sprache,Langue,Idioma,Lingua,Idioma,Język,言語,语言,Тіл
-SETTINGS_WINDOW_MODE,Window Mode,Pəncərə rejimi,Pencere Modu,Режим окна,Режим вікна,Fenstermodus,Mode d'affichage,Modo de ventana,Modalità finestra,Modo de janela,Tryb okna,ウィンドウモード,窗口模式,Терезе режимі
-SETTINGS_RESOLUTION,Resolution,Ekran ölçüsü,Çözünürlük,Разрешение,Роздільна здатність,Auflösung,Résolution,Resolución,Risoluzione,Resolução,Rozdzielczość,解像度,分辨率,Ажыратымдылық
-SETTINGS_WINDOW_MODE_WINDOWED,Windowed,Pəncərəli,Pencereli,Оконный,Віконний,Fenster,Fenêtré,Ventana,Finestra,Em janela,Okno,ウィンドウ,窗口,Терезелі
-SETTINGS_WINDOW_MODE_FULLSCREEN,Fullscreen,Tam ekran,Tam Ekran,Полный экран,Повний екран,Vollbild,Plein écran,Pantalla completa,Schermo intero,Tela cheia,Pełny ekran,フルスクリーン,全屏,Толық экран
-SETTINGS_WINDOW_MODE_EXCLUSIVE,Exclusive Fullscreen,Eksklüziv tam ekran,Özel Tam Ekran,Эксклюзивный полный экран,Ексклюзивний повний екран,Exklusiver Vollbildmodus,Plein écran exclusif,Pantalla completa exclusiva,Schermo intero esclusivo,Tela cheia exclusiva,Pełny ekran wyłączny,排他的フルスクリーン,独占全屏,Эксклюзивті толық экран
-SETTINGS_MONITOR,Monitor,Ekran,Monitör,Монитор,Монітор,Monitor,Moniteur,Monitor,Monitor,Monitor,Monitor,モニター,显示器,Монитор
-SETTINGS_VSYNC,VSync,Şaquli sinxronizasiya,Dikey Senkronizasyon,Вертикальная синхронизация,Вертикальна синхронізація,VSync,Synchro verticale,Sincronización vertical,Sincronizzazione verticale,Sincronização vertical,Synchronizacja pionowa,垂直同期,垂直同步,Тік синхрондау
-SETTINGS_FPS_CAP,FPS Limit,FPS limiti,FPS Sınırı,Лимит FPS,Ліміт FPS,FPS-Limit,Limite de FPS,Límite de FPS,Limite FPS,Limite de FPS,Limit FPS,FPS上限,FPS 上限,FPS шегі
-SETTINGS_SHOW_FPS,Show FPS,FPS göstər,FPS Göster,Показывать FPS,Показувати FPS,FPS anzeigen,Afficher les FPS,Mostrar FPS,Mostra FPS,Mostrar FPS,Pokaż FPS,FPSを表示,显示 FPS,FPS көрсету
-SETTINGS_QUALITY_PRESET,Quality Preset,Keyfiyyət şablonu,Kalite Ön Ayarı,Пресет качества,Пресет якості,Qualitätsvorgabe,Préréglage de qualité,Preajuste de calidad,Preset di qualità,Predefinição de qualidade,Profil jakości,画質プリセット,画质预设,Сапа үлгісі
-SETTINGS_MSAA,Anti-Aliasing (MSAA),Kənar yumşaltma (MSAA),Kenar Yumuşatma (MSAA),Сглаживание (MSAA),Згладжування (MSAA),Kantenglättung (MSAA),Anticrénelage (MSAA),Suavizado (MSAA),Anti-aliasing (MSAA),Suavização (MSAA),Antyaliasing (MSAA),アンチエイリアス (MSAA),抗锯齿 (MSAA),Тегістеу (MSAA)
-SETTINGS_SSAA,Screen-Space AA,Ekran kənar yumşaltması (SSAA),Ekran Kenar Yumuşatması (SSAA),Экранное сглаживание,Екранне згладжування,Bildschirmraum-AA,AA en espace écran,AA en espacio de pantalla,AA nello spazio schermo,AA no espaço da tela,AA w przestrzeni ekranu,スクリーンスペースAA,屏幕空间抗锯齿,Экрандық тегістеу
-SETTINGS_TAA,Temporal AA (TAA),Zamanlı kənar yumşaltma (TAA),Zamansal Kenar Yumuşatma (TAA),Временное сглаживание (TAA),Часове згладжування (TAA),Temporales AA (TAA),AA temporel (TAA),AA temporal (TAA),AA temporale (TAA),AA temporal (TAA),AA czasowe (TAA),テンポラルAA (TAA),时间抗锯齿 (TAA),Уақытша тегістеу (TAA)
-SETTINGS_RENDER_SCALE,Render Scale,Render miqyası,Render Ölçeği,Масштаб рендера,Масштаб рендера,Render-Skalierung,Échelle de rendu,Escala de render,Scala di rendering,Escala de renderização,Skala renderowania,レンダースケール,渲染比例,Рендер масштабы
-SETTINGS_SHADOWS,Shadows,Kölgələr,Gölgeler,Тени,Тіні,Schatten,Ombres,Sombras,Ombre,Sombras,Cienie,影,阴影,Көлеңкелер
-SETTINGS_GLOW,Glow,Parıltı,Parlama,Свечение,Світіння,Leuchten,Lueur,Resplandor,Bagliore,Brilho,Poświata,グロー,辉光,Жарқыл
-SETTINGS_SSAO,Ambient Occlusion (SSAO),Ətraf işıq gizlənməsi (SSAO),Ortam örtme (SSAO),Затенение окружения (SSAO),Затінення оточення (SSAO),Umgebungsverdeckung (SSAO),Occlusion ambiante (SSAO),Oclusión ambiental (SSAO),Occlusione ambientale (SSAO),Oclusão de ambiente (SSAO),Okluzja otoczenia (SSAO),アンビエントオクルージョン (SSAO),环境光遮蔽 (SSAO),Қоршаған ортаны көлеңкелеу (SSAO)
-SETTINGS_SSR,Reflections (SSR),Əks olunmalar (SSR),Yansımalar (SSR),Отражения (SSR),Відображення (SSR),Reflexionen (SSR),Réflexions (SSR),Reflejos (SSR),Riflessi (SSR),Reflexos (SSR),Odbicia (SSR),反射 (SSR),反射 (SSR),Шағылысулар (SSR)
-SETTINGS_OFF,Off,Söndürülü,Kapalı,Выкл,Вимк,Aus,Désactivé,Desactivado,Disattivato,Desligado,Wył.,オフ,关,Өшірулі
-SETTINGS_ON,On,Aktiv,Açık,Вкл,Увімк,An,Activé,Activado,Attivato,Ligado,Wł.,オン,开,Қосулы
-SETTINGS_ADAPTIVE,Adaptive,Adaptiv,Uyarlanabilir,Адаптивная,Адаптивна,Adaptiv,Adaptative,Adaptativa,Adattiva,Adaptativa,Adaptacyjna,アダプティブ,自适应,Бейімделгіш
-SETTINGS_UNLIMITED,Unlimited,Limitsiz,Sınırsız,Без ограничений,Без обмежень,Unbegrenzt,Illimité,Ilimitado,Illimitato,Ilimitado,Bez limitu,無制限,无限制,Шектеусіз
-SETTINGS_QUALITY_LOW,Low,Aşağı,Düşük,Низкое,Низька,Niedrig,Faible,Bajo,Basso,Baixo,Niskie,低,低,Төмен
-SETTINGS_QUALITY_MEDIUM,Medium,Orta,Orta,Среднее,Середня,Mittel,Moyen,Medio,Medio,Médio,Średnie,中,中,Орташа
-SETTINGS_QUALITY_HIGH,High,Yüksək,Yüksek,Высокое,Висока,Hoch,Élevé,Alto,Alto,Alto,Wysokie,高,高,Жоғары
-SETTINGS_QUALITY_CUSTOM,Custom,Fərdi,Özel,Свой,Власна,Benutzerdefiniert,Personnalisé,Personalizado,Personalizzato,Personalizado,Własne,カスタム,自定义,Өзгеше
-DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time},{day} {month} {year} {time}
-MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月,қаң
-MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月,ақп
-MONTH_3,Mar,Mar,Mar,мар,бер,Mär,mars,mar,mar,mar,mar,3月,3月,нау
-MONTH_4,Apr,Apr,Nis,апр,кві,Apr,avr.,abr,apr,abr,kwi,4月,4月,сәу
-MONTH_5,May,May,May,мая,тра,Mai,mai,may,mag,mai,maj,5月,5月,мам
-MONTH_6,Jun,İyn,Haz,июн,чер,Jun,juin,jun,giu,jun,cze,6月,6月,мау
-MONTH_7,Jul,İyl,Tem,июл,лип,Jul,juil.,jul,lug,jul,lip,7月,7月,шіл
-MONTH_8,Aug,Avq,Ağu,авг,сер,Aug,août,ago,ago,ago,sie,8月,8月,там
-MONTH_9,Sep,Sen,Eyl,сен,вер,Sep,sept.,sep,set,set,wrz,9月,9月,қыр
-MONTH_10,Oct,Okt,Eki,окт,жов,Okt,oct.,oct,ott,out,paź,10月,10月,қаз
-MONTH_11,Nov,Noy,Kas,ноя,лис,Nov,nov.,nov,nov,nov,lis,11月,11月,қар
-MONTH_12,Dec,Dek,Ara,дек,гру,Dez,déc.,dic,dic,dez,gru,12月,12月,жел
-INTERACT_INSPECT,Inspect,Yoxla,İncele,Осмотреть,Оглянути,Untersuchen,Examiner,Examinar,Esamina,Inspecionar,Zbadaj,調べる,查看,Тексеру
-INTERACT_PICK_UP,Pick up,Götür,Al,Подобрать,Підняти,Aufheben,Ramasser,Recoger,Raccogli,Pegar,Podnieś,拾う,拾取,Алу
-INTERACT_PRY_OPEN,Pry open,Zorla aç,Zorla aç,Взломать,Зламати,Aufbrechen,Forcer,Forzar,Scassina,Arrombar,Podważ,こじ開ける,撬开,Бұзып ашу
-ITEM_CROWBAR,Crowbar,Qaldırıcı,Levye,Монтировка,Лом,Brecheisen,Pied-de-biche,Palanca,Piede di porco,Pé de cabra,Łom,バール,撬棍,Лом
-TEST_BOX,Box,Qutu,Kutu,Ящик,Ящик,Kiste,Caisse,Caja,Scatola,Caixa,Skrzynia,箱,箱子,Жәшік
-INTERACT_TALK,Talk,Danış,Konuş,Говорить,Говорити,Sprechen,Parler,Hablar,Parla,Falar,Rozmawiaj,話す,交谈,Сөйлесу
-INTERACT_TRADE,Trade,Ticarət et,Ticaret Yap,Торговать,Торгувати,Handeln,Échanger,Comerciar,Scambia,Negociar,Handluj,取引,交易,Саудаласу
+keys,en,az,tr,ru,uk,de,fr,es,it,pt_BR,pl,ja,zh_CN,kk,ka,ar
+MENU_RESUME,Resume,Davam et,Devam Et,Продолжить,Продовжити,Fortsetzen,Reprendre,Reanudar,Riprendi,Continuar,Wznów,再開,继续,Жалғастыру,გაგრძელება,استئناف
+MENU_SAVE_GAME,Save Game,Oyunu yadda saxla,Oyunu Kaydet,Сохранить игру,Зберегти гру,Spiel speichern,Sauvegarder la partie,Guardar partida,Salva partita,Salvar jogo,Zapisz grę,ゲームを保存,保存游戏,Ойынды сақтау,თამაშის შენახვა,حفظ اللعبة
+MENU_LOAD_GAME,Load Game,Oyunu yüklə,Oyunu Yükle,Загрузить игру,Завантажити гру,Spiel laden,Charger la partie,Cargar partida,Carica partita,Carregar jogo,Wczytaj grę,ゲームを読み込む,读取游戏,Ойынды жүктеу,თამაშის ჩატვირთვა,تحميل اللعبة
+MENU_SETTINGS,Settings,Parametrlər,Ayarlar,Настройки,Налаштування,Einstellungen,Paramètres,Ajustes,Impostazioni,Configurações,Ustawienia,設定,设置,Параметрлер,პარამეტრები,الإعدادات
+MENU_CREDITS,Credits,Yaradıcılar,Emeği Geçenler,Авторы,Автори,Mitwirkende,Crédits,Créditos,Crediti,Créditos,Twórcy,クレジット,制作人员,Авторлар,შემქმნელები,شكر وتقدير
+MENU_EXIT_TO_MENU,Exit To Menu,Menyuya çıx,Menüye Çık,Выйти в меню,Вийти в меню,Zurück zum Menü,Retour au menu,Salir al menú,Esci al menu,Sair para o menu,Wyjdź do menu,メニューに戻る,返回主菜单,Мәзірге шығу,მენიუში გასვლა,الخروج إلى القائمة
+MENU_EXIT_TO_DESKTOP,Exit To Desktop,İş masasına çıx,Masaüstüne Çık,Выйти на рабочий стол,Вийти на робочий стіл,Zum Desktop beenden,Quitter vers le bureau,Salir al escritorio,Esci sul desktop,Sair para a área de trabalho,Wyjdź na pulpit,デスクトップに戻る,退出到桌面,Жұмыс үстеліне шығу,სამუშაო მაგიდაზე გასვლა,الخروج إلى سطح المكتب
+SETTINGS_TAB_GENERAL,General,Ümumi,Genel,Общие,Загальні,Allgemein,Général,General,Generali,Geral,Ogólne,一般,常规,Жалпы,ზოგადი,عام
+SETTINGS_TAB_GRAPHICS,Graphics,Qrafika,Grafik,Графика,Графіка,Grafik,Graphismes,Gráficos,Grafica,Gráficos,Grafika,グラフィック,图形,Графика,გრაფიკა,الرسومات
+SETTINGS_TAB_AUDIO,Audio,Səs,Ses,Звук,Звук,Audio,Audio,Audio,Audio,Áudio,Dźwięk,オーディオ,音频,Дыбыс,ხმა,الصوت
+SETTINGS_TAB_CONTROLS,Controls,İdarəetmə,Kontroller,Управление,Керування,Steuerung,Commandes,Controles,Controlli,Controles,Sterowanie,コントロール,控制,Басқару,მართვა,التحكم
+SETTINGS_LANGUAGE,Language,Dil,Dil,Язык,Мова,Sprache,Langue,Idioma,Lingua,Idioma,Język,言語,语言,Тіл,ენა,اللغة
+SETTINGS_WINDOW_MODE,Window Mode,Pəncərə rejimi,Pencere Modu,Режим окна,Режим вікна,Fenstermodus,Mode d'affichage,Modo de ventana,Modalità finestra,Modo de janela,Tryb okna,ウィンドウモード,窗口模式,Терезе режимі,ფანჯრის რეჟიმი,وضع النافذة
+SETTINGS_RESOLUTION,Resolution,Ekran ölçüsü,Çözünürlük,Разрешение,Роздільна здатність,Auflösung,Résolution,Resolución,Risoluzione,Resolução,Rozdzielczość,解像度,分辨率,Ажыратымдылық,გარჩევადობა,الدقة
+SETTINGS_WINDOW_MODE_WINDOWED,Windowed,Pəncərəli,Pencereli,Оконный,Віконний,Fenster,Fenêtré,Ventana,Finestra,Em janela,Okno,ウィンドウ,窗口,Терезелі,ფანჯარაში,نافذة
+SETTINGS_WINDOW_MODE_FULLSCREEN,Fullscreen,Tam ekran,Tam Ekran,Полный экран,Повний екран,Vollbild,Plein écran,Pantalla completa,Schermo intero,Tela cheia,Pełny ekran,フルスクリーン,全屏,Толық экран,სრულ ეკრანზე,ملء الشاشة
+SETTINGS_WINDOW_MODE_EXCLUSIVE,Exclusive Fullscreen,Eksklüziv tam ekran,Özel Tam Ekran,Эксклюзивный полный экран,Ексклюзивний повний екран,Exklusiver Vollbildmodus,Plein écran exclusif,Pantalla completa exclusiva,Schermo intero esclusivo,Tela cheia exclusiva,Pełny ekran wyłączny,排他的フルスクリーン,独占全屏,Эксклюзивті толық экран,ექსკლუზიური სრული ეკრანი,ملء الشاشة الحصري
+SETTINGS_MONITOR,Monitor,Ekran,Monitör,Монитор,Монітор,Monitor,Moniteur,Monitor,Monitor,Monitor,Monitor,モニター,显示器,Монитор,მონიტორი,الشاشة
+SETTINGS_VSYNC,VSync,Şaquli sinxronizasiya,Dikey Senkronizasyon,Вертикальная синхронизация,Вертикальна синхронізація,VSync,Synchro verticale,Sincronización vertical,Sincronizzazione verticale,Sincronização vertical,Synchronizacja pionowa,垂直同期,垂直同步,Тік синхрондау,ვერტიკალური სინქრონიზაცია,المزامنة العمودية
+SETTINGS_FPS_CAP,FPS Limit,FPS limiti,FPS Sınırı,Лимит FPS,Ліміт FPS,FPS-Limit,Limite de FPS,Límite de FPS,Limite FPS,Limite de FPS,Limit FPS,FPS上限,FPS 上限,FPS шегі,FPS ლიმიტი,حد الإطارات (FPS)
+SETTINGS_SHOW_FPS,Show FPS,FPS göstər,FPS Göster,Показывать FPS,Показувати FPS,FPS anzeigen,Afficher les FPS,Mostrar FPS,Mostra FPS,Mostrar FPS,Pokaż FPS,FPSを表示,显示 FPS,FPS көрсету,FPS-ის ჩვენება,إظهار FPS
+SETTINGS_QUALITY_PRESET,Quality Preset,Keyfiyyət şablonu,Kalite Ön Ayarı,Пресет качества,Пресет якості,Qualitätsvorgabe,Préréglage de qualité,Preajuste de calidad,Preset di qualità,Predefinição de qualidade,Profil jakości,画質プリセット,画质预设,Сапа үлгісі,ხარისხის პრესეტი,إعداد الجودة المسبق
+SETTINGS_MSAA,Anti-Aliasing (MSAA),Kənar yumşaltma (MSAA),Kenar Yumuşatma (MSAA),Сглаживание (MSAA),Згладжування (MSAA),Kantenglättung (MSAA),Anticrénelage (MSAA),Suavizado (MSAA),Anti-aliasing (MSAA),Suavização (MSAA),Antyaliasing (MSAA),アンチエイリアス (MSAA),抗锯齿 (MSAA),Тегістеу (MSAA),გლუვება (MSAA),تنعيم الحواف (MSAA)
+SETTINGS_SSAA,Screen-Space AA,Ekran kənar yumşaltması (SSAA),Ekran Kenar Yumuşatması (SSAA),Экранное сглаживание,Екранне згладжування,Bildschirmraum-AA,AA en espace écran,AA en espacio de pantalla,AA nello spazio schermo,AA no espaço da tela,AA w przestrzeni ekranu,スクリーンスペースAA,屏幕空间抗锯齿,Экрандық тегістеу,ეკრანის სივრცის გლუვება,تنعيم الحواف في فضاء الشاشة
+SETTINGS_TAA,Temporal AA (TAA),Zamanlı kənar yumşaltma (TAA),Zamansal Kenar Yumuşatma (TAA),Временное сглаживание (TAA),Часове згладжування (TAA),Temporales AA (TAA),AA temporel (TAA),AA temporal (TAA),AA temporale (TAA),AA temporal (TAA),AA czasowe (TAA),テンポラルAA (TAA),时间抗锯齿 (TAA),Уақытша тегістеу (TAA),დროითი გლუვება (TAA),تنعيم الحواف الزمني (TAA)
+SETTINGS_RENDER_SCALE,Render Scale,Render miqyası,Render Ölçeği,Масштаб рендера,Масштаб рендера,Render-Skalierung,Échelle de rendu,Escala de render,Scala di rendering,Escala de renderização,Skala renderowania,レンダースケール,渲染比例,Рендер масштабы,რენდერის მასშტაბი,مقياس العرض
+SETTINGS_SHADOWS,Shadows,Kölgələr,Gölgeler,Тени,Тіні,Schatten,Ombres,Sombras,Ombre,Sombras,Cienie,影,阴影,Көлеңкелер,ჩრდილები,الظلال
+SETTINGS_GLOW,Glow,Parıltı,Parlama,Свечение,Світіння,Leuchten,Lueur,Resplandor,Bagliore,Brilho,Poświata,グロー,辉光,Жарқыл,ნათება,التوهج
+SETTINGS_SSAO,Ambient Occlusion (SSAO),Ətraf işıq gizlənməsi (SSAO),Ortam örtme (SSAO),Затенение окружения (SSAO),Затінення оточення (SSAO),Umgebungsverdeckung (SSAO),Occlusion ambiante (SSAO),Oclusión ambiental (SSAO),Occlusione ambientale (SSAO),Oclusão de ambiente (SSAO),Okluzja otoczenia (SSAO),アンビエントオクルージョン (SSAO),环境光遮蔽 (SSAO),Қоршаған ортаны көлеңкелеу (SSAO),გარემოს ჩრდილვა (SSAO),الحجب المحيطي (SSAO)
+SETTINGS_SSR,Reflections (SSR),Əks olunmalar (SSR),Yansımalar (SSR),Отражения (SSR),Відображення (SSR),Reflexionen (SSR),Réflexions (SSR),Reflejos (SSR),Riflessi (SSR),Reflexos (SSR),Odbicia (SSR),反射 (SSR),反射 (SSR),Шағылысулар (SSR),ანარეკლები (SSR),الانعكاسات (SSR)
+SETTINGS_OFF,Off,Söndürülü,Kapalı,Выкл,Вимк,Aus,Désactivé,Desactivado,Disattivato,Desligado,Wył.,オフ,关,Өшірулі,გამორთ.,إيقاف
+SETTINGS_ON,On,Aktiv,Açık,Вкл,Увімк,An,Activé,Activado,Attivato,Ligado,Wł.,オン,开,Қосулы,ჩართ.,تشغيل
+SETTINGS_ADAPTIVE,Adaptive,Adaptiv,Uyarlanabilir,Адаптивная,Адаптивна,Adaptiv,Adaptative,Adaptativa,Adattiva,Adaptativa,Adaptacyjna,アダプティブ,自适应,Бейімделгіш,ადაპტური,تكيفي
+SETTINGS_UNLIMITED,Unlimited,Limitsiz,Sınırsız,Без ограничений,Без обмежень,Unbegrenzt,Illimité,Ilimitado,Illimitato,Ilimitado,Bez limitu,無制限,无限制,Шектеусіз,შეუზღუდავი,غير محدود
+SETTINGS_QUALITY_LOW,Low,Aşağı,Düşük,Низкое,Низька,Niedrig,Faible,Bajo,Basso,Baixo,Niskie,低,低,Төмен,დაბალი,منخفضة
+SETTINGS_QUALITY_MEDIUM,Medium,Orta,Orta,Среднее,Середня,Mittel,Moyen,Medio,Medio,Médio,Średnie,中,中,Орташа,საშუალო,متوسطة
+SETTINGS_QUALITY_HIGH,High,Yüksək,Yüksek,Высокое,Висока,Hoch,Élevé,Alto,Alto,Alto,Wysokie,高,高,Жоғары,მაღალი,عالية
+SETTINGS_QUALITY_CUSTOM,Custom,Fərdi,Özel,Свой,Власна,Benutzerdefiniert,Personnalisé,Personalizado,Personalizzato,Personalizado,Własne,カスタム,自定义,Өзгеше,მორგებული,مخصصة
+DATE_FORMAT,{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day}. {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time},{year}年{month}{day}日 {time},{year}年{month}{day}日 {time},{day} {month} {year} {time},{day} {month} {year} {time},{day} {month} {year} {time}
+MONTH_1,Jan,Yan,Oca,янв,січ,Jan,janv.,ene,gen,jan,sty,1月,1月,қаң,იან,يناير
+MONTH_2,Feb,Fev,Şub,фев,лют,Feb,févr.,feb,feb,fev,lut,2月,2月,ақп,თებ,فبراير
+MONTH_3,Mar,Mar,Mar,мар,бер,Mär,mars,mar,mar,mar,mar,3月,3月,нау,მარ,مارس
+MONTH_4,Apr,Apr,Nis,апр,кві,Apr,avr.,abr,apr,abr,kwi,4月,4月,сәу,აპრ,أبريل
+MONTH_5,May,May,May,мая,тра,Mai,mai,may,mag,mai,maj,5月,5月,мам,მაი,مايو
+MONTH_6,Jun,İyn,Haz,июн,чер,Jun,juin,jun,giu,jun,cze,6月,6月,мау,ივნ,يونيو
+MONTH_7,Jul,İyl,Tem,июл,лип,Jul,juil.,jul,lug,jul,lip,7月,7月,шіл,ივლ,يوليو
+MONTH_8,Aug,Avq,Ağu,авг,сер,Aug,août,ago,ago,ago,sie,8月,8月,там,აგვ,أغسطس
+MONTH_9,Sep,Sen,Eyl,сен,вер,Sep,sept.,sep,set,set,wrz,9月,9月,қыр,სექ,سبتمبر
+MONTH_10,Oct,Okt,Eki,окт,жов,Okt,oct.,oct,ott,out,paź,10月,10月,қаз,ოქტ,أكتوبر
+MONTH_11,Nov,Noy,Kas,ноя,лис,Nov,nov.,nov,nov,nov,lis,11月,11月,қар,ნოე,نوفمبر
+MONTH_12,Dec,Dek,Ara,дек,гру,Dez,déc.,dic,dic,dez,gru,12月,12月,жел,დეკ,ديسمبر
+INTERACT_INSPECT,Inspect,Yoxla,İncele,Осмотреть,Оглянути,Untersuchen,Examiner,Examinar,Esamina,Inspecionar,Zbadaj,調べる,查看,Тексеру,დათვალიერება,فحص
+INTERACT_PICK_UP,Pick up,Götür,Al,Подобрать,Підняти,Aufheben,Ramasser,Recoger,Raccogli,Pegar,Podnieś,拾う,拾取,Алу,აღება,التقاط
+INTERACT_PRY_OPEN,Pry open,Zorla aç,Zorla aç,Взломать,Зламати,Aufbrechen,Forcer,Forzar,Scassina,Arrombar,Podważ,こじ開ける,撬开,Бұзып ашу,გამოტეხვა,فتح بالقوة
+ITEM_CROWBAR,Crowbar,Qaldırıcı,Levye,Монтировка,Лом,Brecheisen,Pied-de-biche,Palanca,Piede di porco,Pé de cabra,Łom,バール,撬棍,Лом,ლომი,عتلة
+TEST_BOX,Box,Qutu,Kutu,Ящик,Ящик,Kiste,Caisse,Caja,Scatola,Caixa,Skrzynia,箱,箱子,Жәшік,ყუთი,صندوق
+INTERACT_TALK,Talk,Danış,Konuş,Говорить,Говорити,Sprechen,Parler,Hablar,Parla,Falar,Rozmawiaj,話す,交谈,Сөйлесу,საუბარი,تحدث
+INTERACT_TRADE,Trade,Ticarət et,Ticaret Yap,Торговать,Торгувати,Handeln,Échanger,Comerciar,Scambia,Negociar,Handluj,取引,交易,Саудаласу,ვაჭრობა,تبادل
