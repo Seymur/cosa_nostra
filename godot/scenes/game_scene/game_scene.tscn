@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://co8frisfvws2m" path="res://items/weed_package/weed_package.tscn" id="20_weed_package"]
 [ext_resource type="PackedScene" path="res://items/weed_seed/weed_seed.tscn" id="90_seed"]
 [ext_resource type="PackedScene" path="res://items/watering_can/watering_can.tscn" id="91_can"]
+[ext_resource type="PackedScene" path="res://ui/notification/notification.tscn" id="94_notif"]
 [ext_resource type="PackedScene" path="res://ui/plant_stats/plant_stats.tscn" id="93_stats"]
 [ext_resource type="PackedScene" path="res://items/garden_shears/garden_shears.tscn" id="92_shears"]
 [ext_resource type="PackedScene" path="res://ui/snap_indicator/snap_indicator.tscn" id="99_snap"]
@@ -176,6 +177,9 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="PlantStats" parent="GameSceneUI" instance=ExtResource("93_stats")]
+layout_mode = 1
+
+[node name="Notification" parent="GameSceneUI" instance=ExtResource("94_notif")]
 layout_mode = 1
 
 [node name="HotbarLayer" type="CanvasLayer" parent="GameSceneUI" unique_id=781906409]

@@ -20,31 +20,50 @@ var _plant: Node3D
 
 const STAGE_NAMES: Array[String] = ["Seedling", "Young", "Flowering", "Harvest"]
 
-func get_hud_text() -> String:
+func get_hud_text(held: Equippable) -> String:
+	var text := ""
 	match state:
 		State.EMPTY:
-			return "Planter
+			text = "Planter
 Empty"
 		State.PLANTED:
-			return "Weed plant
-Stage: %s (1/%d)
+			text = "Weed plant
+%s (1/%d)
 Needs watering" % [STAGE_NAMES[0], stage_scenes.size()]
 		State.GROWING:
 			var elapsed: int = GameClock.get_total_minutes() - _watered_at
 			var total := stage_duration_minutes * (stage_scenes.size() - 1)
-			return "Weed plant
-Stage: %s (%d/%d)
+			text = "Weed plant
+%s (%d/%d)
 Growth: %d%%
-Next stage in: %s
+Next stage: %s
 Ready in: %s" % [
 				STAGE_NAMES[stage], stage + 1, stage_scenes.size(),
 				clampi(elapsed * 100 / maxi(total, 1), 0, 100),
 				_format_minutes(stage_duration_minutes * (stage + 1) - elapsed),
 				_format_minutes(total - elapsed)]
 		_:
-			return "Weed plant
-Stage: %s (%d/%d)
+			text = "Weed plant
+%s (%d/%d)
 Ready to harvest" % [STAGE_NAMES[stage], stage + 1, stage_scenes.size()]
+	var actions := _action_hints(held)
+	return text if actions.is_empty() else text + "
+
+" + actions
+
+func _action_hints(held: Equippable) -> String:
+	var hints: Array[String] = []
+	match state:
+		State.EMPTY:
+			hints.append("[LMB] Plant seed" if held is WeedSeed else "Needs Weed Seed")
+		State.PLANTED:
+			hints.append("Hold [LMB] Water" if held is WateringCan else "Needs Watering Can")
+		State.HARVESTABLE:
+			hints.append("Hold [LMB] Harvest" if held is GardenShears else "Needs Garden Shears")
+	if state == State.EMPTY and held == null:
+		hints.append("Hold [X] Pick up")
+	return "
+".join(hints)
 
 func _format_minutes(minutes: int) -> String:
 	minutes = maxi(minutes, 0)
@@ -98,16 +117,16 @@ func _on_minute_changed() -> void:
 func _harvest() -> void:
 	if state != State.HARVESTABLE:
 		return
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null or harvest_scene == null:
+		return
+	if not player.give_items(harvest_scene, harvest_amount):
+		player.notified.emit("Not enough inventory space")
+		return
 	_plant.queue_free()
 	_plant = null
 	stage = 0
 	state = State.EMPTY
-	if harvest_scene == null:
-		return
-	for i in harvest_amount:
-		var weed := harvest_scene.instantiate() as Node3D
-		get_parent().add_child(weed)
-		weed.global_position = _plant_anchor.global_position + Vector3(randf_range(-0.3, 0.3), 0.3 + 0.1 * i, randf_range(-0.15, 0.15))
 
 func _show_stage(index: int) -> void:
 	stage = index

@@ -34,8 +34,9 @@ func on_action(action: GUIDEAction) -> void:
 func accepts_item(item: Interactable) -> bool:
 	return false
 
-## Text shown in the HUD while this interactable is focused. Empty shows nothing.
-func get_hud_text() -> String:
+## Text shown in the HUD while this interactable is focused, given the item in hand
+## (or null). Empty shows nothing.
+func get_hud_text(held: Equippable) -> String:
 	return ""
 
 ## Called when a held item's action fires while this interactable is focused.

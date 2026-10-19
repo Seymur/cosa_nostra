@@ -23,7 +23,7 @@
 [ext_resource type="Resource" path="res://input/default/actions/hotbar_previous.tres" id="20_hotbar_previous"]
 [ext_resource type="Resource" path="res://input/default/actions/sprint.tres" id="21_sprint"]
 [ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="22_remove"]
-[ext_resource type="Script" path="res://addons/guide/triggers/guide_trigger_hold.gd" id="23_hold"]
+[ext_resource type="Script" uid="uid://cfvgpvihp74si" path="res://addons/guide/triggers/guide_trigger_hold.gd" id="23_hold"]
 [ext_resource type="Resource" path="res://input/default/actions/snap.tres" id="24_snap"]
 
 [sub_resource type="Resource" id="Resource_xpxm8"]
