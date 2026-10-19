@@ -38,7 +38,7 @@ signal selected_slot_changed(slot: int)
 @onready var head: Node3D = $Head
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var camera: Camera3D = $Head/Camera
-@onready var shape_cast_3d: ShapeCast3D = $Head/Camera/ShapeCast3D
+@onready var ray_cast_3d: RayCast3D = $Head/Camera/RayCast3D
 
 var focused_interactable: Interactable
 var _outline_shown := false
@@ -80,7 +80,7 @@ func _ready() -> void:
 	add_to_group("player")
 	hotbar.resize(HOTBAR_SIZE)
 	inventory.resize(INVENTORY_SIZE)
-	shape_cast_3d.add_exception(self)
+	ray_cast_3d.add_exception(self)
 	GUIDE.enable_mapping_context(default_mapping_context)
 	look_action.triggered.connect(_on_look_triggered)
 	speed_up_action.triggered.connect(_on_speed_up_triggered)
@@ -376,21 +376,12 @@ func _on_look_triggered():
 	$Head.rotate_x(-deg_to_rad(look_action.value_axis_2d.y) * vertical_sensitivity)
 	$Head.rotation_degrees.x = clamp($Head.rotation_degrees.x, -89, 89)
 
-## Returns the Interactable whose hit point in the shape cast is closest to the camera,
-## or null if the sweep hit no interactable. Call it from _physics_process, after the
-## shape cast has updated.
+## Returns the Interactable the ray cast is pointing at, or null if it hit none.
+## Call it from _physics_process, after the ray cast has updated.
 func find_closest_interactable() -> Interactable:
-	var closest: Interactable = null
-	var closest_distance := INF
-	for i in shape_cast_3d.get_collision_count():
-		var interactable := _find_interactable(shape_cast_3d.get_collider(i))
-		if interactable == null:
-			continue
-		var distance := camera.global_position.distance_squared_to(shape_cast_3d.get_collision_point(i))
-		if distance < closest_distance:
-			closest_distance = distance
-			closest = interactable
-	return closest
+	if not ray_cast_3d.is_colliding():
+		return null
+	return _find_interactable(ray_cast_3d.get_collider())
 
 # Interactables are usually a parent of the physics body that got hit, so walk up the tree.
 func _find_interactable(node: Node) -> Interactable:
