@@ -209,68 +209,23 @@ func _sync_hand() -> void:
 	if wanted:
 		_hold(wanted)
 
-## Puts `item` into the selected hotbar slot (or the first free item slot, which then
-## becomes selected) and holds it. When the hotbar is full it is stowed in the
-## inventory instead, and does nothing when that is full too.
+## Puts `item` into the first free item slot of the hotbar without selecting it, or into
+## the inventory when the hotbar is full (and does nothing when that is full too).
+## Only a free slot that is already selected takes the item into the hand.
 func pick_up(item: Equippable) -> void:
 	if _merge_into_stack(item):
 		return
-	if held_item:
-		return
-	var slot := selected_slot
-	if slot == BARE_HANDS_SLOT or hotbar[slot] != null:
-		slot = _find_free_slot()
+	var slot := _find_free_slot()
 	if slot == -1:
 		_stow_in_inventory(item)
 		return
 	hotbar[slot] = item
-	if slot != selected_slot:
-		selected_slot = slot
-		selected_slot_changed.emit(slot)
-	_hold(hotbar[slot])
-	hotbar_changed.emit()
-
-## How many of the item in `scene` fit into the hotbar and inventory, counting room
-## left in stacks of it and empty slots.
-func free_room_for(scene: PackedScene) -> int:
-	var sample := scene.instantiate() as Equippable
-	var per_slot := sample.max_stack
-	var path := sample.scene_file_path
-	sample.free()
-	var room := 0
-	for container in [ItemStore.HOTBAR, ItemStore.INVENTORY]:
-		var items := _items_of(container)
-		for i in items.size():
-			if is_fixed_slot(container, i):
-				continue
-			if items[i] == null:
-				room += per_slot
-			elif per_slot > 1 and items[i].scene_file_path == path:
-				room += items[i].max_stack - items[i].stack_count
-	return room
-
-## Adds `amount` of the item in `scene` to existing stacks, then the first free hotbar
-## slot, then the inventory,
-## even while something else is held. Returns false, adding nothing, when it won't fit.
-func give_items(scene: PackedScene, amount: int) -> bool:
-	if free_room_for(scene) < amount:
-		return false
-	for n in amount:
-		var item := scene.instantiate() as Equippable
-		if _merge_into_stack(item):
-			continue
-		get_parent().add_child(item)
-		var slot := _find_free_slot()
-		if slot != -1:
-			hotbar[slot] = item
-			item.stow(head)
-			hotbar_changed.emit()
-			continue
-		slot = _find_free_inventory_slot()
-		inventory[slot] = item
+	if slot == selected_slot and held_item == null:
+		_hold(item)
+	else:
 		item.stow(head)
-		inventory_changed.emit()
-	return true
+		set_focused_interactable(null)
+	hotbar_changed.emit()
 
 ## Folds a picked-up `item` into a stack of the same kind that has room. Returns
 ## whether it did; the item node is then freed.
