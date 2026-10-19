@@ -34,6 +34,10 @@ func on_action(action: GUIDEAction) -> void:
 func accepts_item(item: Interactable) -> bool:
 	return false
 
+## Text shown in the HUD while this interactable is focused. Empty shows nothing.
+func get_hud_text() -> String:
+	return ""
+
 ## Called when a held item's action fires while this interactable is focused.
 ## Return true to handle it with an item-specific interaction; when false the
 ## player falls back to the plain interact action, as if nothing were held.

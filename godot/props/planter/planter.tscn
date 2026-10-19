@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mri2fubgu3u0" path="res://props/planter/planter.gd" id="1_ov38j"]
 [ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="2_remove"]
-[ext_resource type="PackedScene" uid="uid://cc4dfj6147ykc" path="res://items/weed/weed.tscn" id="weed"]
+[ext_resource type="PackedScene" path="res://items/weed_leaves/weed_leaves.tscn" id="weed"]
 [ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S1_Seedling.glb" id="s1"]
 [ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S2_Young.glb" id="s2"]
 [ext_resource type="PackedScene" path="res://models/weed_plant/Weed_Plant_S3_Flowering.glb" id="s3"]

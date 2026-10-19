@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" path="res://ui/crosshair/crosshair.gd" id="2_script"]
 [ext_resource type="Resource" path="res://input/default/actions/remove.tres" id="3_remove"]
+[ext_resource type="Resource" path="res://input/items/watering_can/watering_can_primary.tres" id="4_can"]
+[ext_resource type="Resource" path="res://input/items/garden_shears/garden_shears_primary.tres" id="5_shears"]
 [ext_resource type="Shader" path="res://ui/crosshair/crosshair.gdshader" id="1_shader"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dot"]
@@ -28,3 +30,4 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_script")
 remove_action = ExtResource("3_remove")
+hold_actions = Array[GUIDEAction]([ExtResource("3_remove"), ExtResource("4_can"), ExtResource("5_shears")])

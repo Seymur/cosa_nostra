@@ -18,6 +18,42 @@ var _plant: Node3D
 
 @onready var _plant_anchor: Node3D = $PlantAnchor
 
+const STAGE_NAMES: Array[String] = ["Seedling", "Young", "Flowering", "Harvest"]
+
+func get_hud_text() -> String:
+	match state:
+		State.EMPTY:
+			return "Planter
+Empty"
+		State.PLANTED:
+			return "Weed plant
+Stage: %s (1/%d)
+Needs watering" % [STAGE_NAMES[0], stage_scenes.size()]
+		State.GROWING:
+			var elapsed: int = GameClock.get_total_minutes() - _watered_at
+			var total := stage_duration_minutes * (stage_scenes.size() - 1)
+			return "Weed plant
+Stage: %s (%d/%d)
+Growth: %d%%
+Next stage in: %s
+Ready in: %s" % [
+				STAGE_NAMES[stage], stage + 1, stage_scenes.size(),
+				clampi(elapsed * 100 / maxi(total, 1), 0, 100),
+				_format_minutes(stage_duration_minutes * (stage + 1) - elapsed),
+				_format_minutes(total - elapsed)]
+		_:
+			return "Weed plant
+Stage: %s (%d/%d)
+Ready to harvest" % [STAGE_NAMES[stage], stage + 1, stage_scenes.size()]
+
+func _format_minutes(minutes: int) -> String:
+	minutes = maxi(minutes, 0)
+	var days := minutes / 1440
+	var hours := minutes % 1440 / 60
+	if days > 0:
+		return "%dd %dh" % [days, hours]
+	return "%dh %dm" % [hours, minutes % 60]
+
 func accepts_item(item: Interactable) -> bool:
 	return (item is WeedSeed and state == State.EMPTY) or (item is WateringCan and state == State.PLANTED) or (item is GardenShears and state == State.HARVESTABLE)
 
