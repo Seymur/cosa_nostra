@@ -59,7 +59,8 @@ const SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const CROUCH_SPEED = 2.5
 const JUMP_VELOCITY = 4.5
-const AIR_ACCEL = 4.0
+const AIR_SPEED = 2.5
+const AIR_ACCEL = 20.0
 const DROP_SPEED = 2.0
 
 const STAND_HEIGHT = 1.8
@@ -413,12 +414,12 @@ func _physics_process(delta: float) -> void:
 	elif sprint_action.is_triggered() and is_on_floor():
 		speed = SPRINT_SPEED
 	if not is_on_floor():
-		# Limited air control: nudge velocity, no sprinting, keep momentum.
-		if direction:
-			var horizontal := Vector3(velocity.x, 0, velocity.z)
-			horizontal = horizontal.move_toward(direction * speed, AIR_ACCEL * delta)
-			velocity.x = horizontal.x
-			velocity.z = horizontal.z
+		# Lower top speed in the air: steer toward it and cap horizontal speed.
+		var horizontal := Vector3(velocity.x, 0, velocity.z)
+		horizontal = horizontal.move_toward(direction * AIR_SPEED, AIR_ACCEL * delta)
+		horizontal = horizontal.limit_length(maxf(AIR_SPEED, 0.0))
+		velocity.x = horizontal.x
+		velocity.z = horizontal.z
 	elif direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
